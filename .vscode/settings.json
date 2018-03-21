@@ -4,7 +4,6 @@
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.autoIndent": true,
     "editor.codeLens": true,
-    "editor.colorDecorators": true,
     "editor.detectIndentation": true,
     "editor.dragAndDrop": true,
     "files.autoGuessEncoding": true,
