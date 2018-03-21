@@ -1,0 +1,29 @@
+{
+    "name": "tq_admin",
+    "version": "1.0.0",
+    "description": "Admin console to manage products",
+    "main": "index.js",
+    "scripts": {
+        "test": "test",
+        "start": "webpack --config webpack.config.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CliffCrerar/TQ_admin.git"
+    },
+    "author": "Cliff Crerar",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/CliffCrerar/TQ_admin/issues"
+    },
+    "homepage": "https://github.com/CliffCrerar/TQ_admin#readme",
+    "devDependencies": {
+        "eslint": "^4.19.0",
+        "webpack": "^4.2.0"
+    },
+    "dependencies": {
+        "bootstrap": "^4.0.0",
+        "jquery": "^3.3.1",
+        "node": "^9.8.0"
+    }
+}
