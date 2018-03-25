@@ -8,6 +8,7 @@ const ManifestPlugin = require('clean-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     target: 'node',
+    devtool: 'inline-source-map',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
