@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:26:29 
- * Last modified  : 2018-03-27 03:56:58
+ * Last modified  : 2018-03-27 06:03:15
  */
 
 .workSpace {
@@ -24,6 +24,27 @@
   height: 100%;
 }
 
+.form-control {
+  min-height: 24px !important;
+  margin: 5px 0 5px 0 !important;
+}
+
 .imgSettings {
-  /*width: 100%;*/
+  margin-left: 0px;
+  width: 100% !important;
+  border: solid 2px black;
+  border-radius: 5px;
+}
+
+.btnLocalize {
+  width: 66%;
+  margin: 0 0 5px 0;
+}
+
+.inpgrp1 {
+  padding-right: 0px !important;
+}
+
+.imgLink:hover {
+  transform: scale(2);
 }

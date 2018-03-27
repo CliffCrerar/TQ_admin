@@ -15,7 +15,7 @@ module.exports = {
   },
   module: {
     rules: [
-      {
+      /*{
         test: /\.(jpe?g|png|gif)$/i,
         loader: 'file-loader',
         query: {
@@ -24,7 +24,7 @@ module.exports = {
           //the images will be emmited to public/assets/images/ folder
           //the images will be put in the DOM <style> tag as eg. background: url(assets/images/image.png);
         }
-      },
+      },*/
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']

@@ -8,78 +8,128 @@
     </div>
     <div class="card card2">
         <form class="form-inline card-body">
+            <!-- PART NUMBER -->
             <div class="form-group mb-2">
-                <label for="staticEmail2" class="sr-only">Part number</label>
+                <label for="partNumber" class="sr-only">Part number</label>
                 <input type="text" readonly class="form-control-plaintext text-right" id="partNumber" value="Part Number:">
             </div>
             <div class="form-group mx-sm-3 mb-2">
-                <label for="partNumberLabel" class="sr-only">Type Number here</label>
-                <input type="text" class="form-control" id="partNumberInput" placeholder="Type here">
+                <label for="partNumber" class="sr-only">Type Number here</label>
+                <input type="text" class="form-control" id="partNumber" placeholder="Type here">
             </div>
             <button id="showPart" type="button" class="btn btn-primary mb-2">Show Part Detail</button>
+            <!-- /PART NUMBER -->
+
+            <!-- IMG CONTROLS -->
             <div id="img" class="imgSettings row">
                 <div class="col-8 row">
-                    <label for="partName" class="partNameLabel col-4">Part name</label>
-                    <input type="text" class="form-control col-8" id="partNumberInput" placeholder="Type here">
-                    <label for="partName" class="partNameLabel col-4">Part name</label>
-                    <input type="text" class="form-control col-8" id="partNumberInput" placeholder="Type here">
+                    <label for="imgLinkWeb" class="partNameLabel col-4">Web link</label>
+                    <input type="text" class="form-control col-8" id="imgLinkWeb" placeholder="">
+                    <label for="imgLinkLocal" class="partNameLabel col-4">Local Link</label>
+                    <input type="text" class="form-control col-8" id="imgLinkLocal" placeholder="">
+                    <div class="col-12">
+                        <button type="button" class="btnLocalize btn btn-outline-warning btn-block float-right">Localize Image</button>
+                    </div>
                 </div>
-
                 <div class="col-4">
                     <img id="imgLink" class="img-fluid imgLink" src="http://tinyurl.com/y8lswq57">
                 </div>
-
             </div>
+            <!-- /IMG CONTROLS -->
+
 
             <div class="container-fluid">
+                <!-- PART NAME -->
                 <div class="form-group row">
                     <label for="partName" class="partNameLabel col-3">Part name</label>
-                    <input type="text" class="form-control partNameInput col-9" id="partName" placeholder="Example input">
+                    <input type="text" class="form-control partNameInput col-9" id="partName" placeholder="">
                 </div>
+                <!-- /PART NAME -->
+
+                <!-- PART DESCRIPTION -->
                 <div class="form-group row">
                     <label for="partDesc" class="col-3">Part description</label>
                     <textarea class="form-control col-9" id="partDesc" rows="3"></textarea>
                 </div>
+                <!-- /PART DESCRIPTION -->
+
+                <!-- MAKES -->
                 <div class="form-group row">
                     <label for="make" class="partNameLabel col-3">Make</label>
-                    <select class="form-control col-9" id="make">
+                    <select class="form-control col-9" id="make" placeholder="--select--">
+                        <!--
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
+                        -->
                     </select>
                 </div>
+                <!-- /MAKES -->
+
+                <!-- MODELS -->
                 <div class="form-group row">
                     <label for="make" class="col-3">Models</label>
                     <select multiple class="form-control col-6" id="make">
+                        <!--
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
+                        -->
                     </select>
                     <div class="btn-group-vertical col-3">
                         <button type="button" class="btn btn-success">Add model</button>
                         <button type="button" class="btn btn-danger">Remove model</button>
                     </div>
                 </div>
+                <!-- /MODELS -->
+
+                <!-- COLORS / INSTALL TIME -->
                 <div class="form-group row">
                     <label for="partName" class="partNameLabel col-3">Color</label>
-                    <input type="text" class="form-control partNameInput col-4" id="partName" placeholder="Example input">
+                    <input type="text" class="form-control partNameInput col-2" id="partName" placeholder="">
                     <label for="partDesc" class="col-3">Install Time</label>
-                    <input type="text" class="form-control partNameInput col-2" id="partName" placeholder="Example input">
+                    <div class="input-group col-4 inpgrp1">
+                        <input type="text" class="form-control partNameInput" id="partName" placeholder="">
+                        <select class="form-control" id="make">
+                            <option>Minutes</option>
+                            <option>Hours</option>
+                        </select>
+                    </div>
                 </div>
+                <!-- /COLORS / INSTALL TIME -->
+
+                <!-- CATEGORY / PRICES -->
                 <div class="form-group row">
-                    <label for="partName" class="partNameLabel col-3">Category</label>
-                    <input type="text" class="form-control partNameInput col-4" id="partName" placeholder="Example input">
-                    <label for="partDesc" class="col-3">Price</label>
-                    <input type="text" class="form-control partNameInput col-2" id="partName" placeholder="Example input">
+                    <label for="cat" class="partNameLabel col-3">Category</label>
+                    <input type="text" class="form-control partNameInput col-4" id="cat" placeholder="">
+                    <label for="price" class="col-3">Price</label>
+                    <input type="text" class="form-control partNameInput col-2" id="price" placeholder="">
                 </div>
+                <!-- /CATEGORY / PRICES -->
+
+                <!-- GUARENTEE -->
                 <div class="form-group row">
-                    <label for="partName" class="partNameLabel col-3">Guarantee</label>
-                    <input type="text" class="form-control partNameInput col-4" id="partName" placeholder="Example input">
+                    <label for="grnt" class="partNameLabel col-3">Guarantee</label>
+                    <select class="form-control col-4" id="make">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                    </select>
+                    <label for="price" class="col-3">Period</label>
+                    <select class="form-control col-2" id="make">
+                        <option>Months</option>
+                        <option>Years</option>
+                        <option>None</option>
+                    </select>
                 </div>
+                <!-- /GUARENTEE -->
             </div>
 
         </form>
