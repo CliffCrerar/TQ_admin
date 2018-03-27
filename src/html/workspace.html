@@ -8,41 +8,40 @@
     </div>
     <div class="card card2">
         <form class="form-inline card-body">
-            <!-- PART NUMBER -->
-            <div class="form-group mb-2">
-                <label for="partNumber" class="sr-only">Part number</label>
-                <input type="text" readonly class="form-control-plaintext text-right" id="partNumber" value="Part Number:">
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-                <label for="partNumber" class="sr-only">Type Number here</label>
-                <input type="text" class="form-control" id="partNumber" placeholder="Type here">
-            </div>
-            <button id="showPart" type="button" class="btn btn-primary mb-2">Show Part Detail</button>
-            <!-- /PART NUMBER -->
+            <div class="container-fluid">
 
-            <!-- IMG CONTROLS -->
-            <div id="img" class="imgSettings row">
-                <div class="col-8 row">
-                    <label for="imgLinkWeb" class="partNameLabel col-4">Web link</label>
-                    <input type="text" class="form-control col-8" id="imgLinkWeb" placeholder="">
-                    <label for="imgLinkLocal" class="partNameLabel col-4">Local Link</label>
-                    <input type="text" class="form-control col-8" id="imgLinkLocal" placeholder="">
-                    <div class="col-12">
-                        <button type="button" class="btnLocalize btn btn-outline-warning btn-block float-right">Localize Image</button>
+                <!-- PART NUMBER -->
+                <div class="form-group row ">
+                    <label for="partNumber" class="col-3">Part Number</label>
+                    <input type="text" class="form-control col-3" id="partNumber" placeholder="Type here">
+                    <button id="showPart" type="button" class="btn btn-primary col-2">Show Part Detail</button>
+                </div>
+
+                <!-- /PART NUMBER -->
+
+                <!-- IMG CONTROLS -->
+                <div id="img" class="imgSettings row">
+                    <div class="col-8 row">
+                        <label for="imgLinkWeb" class="col-4">Web link</label>
+                        <input type="text" class="form-control col-8" id="imgLinkWeb" placeholder="">
+                        <label for="imgLinkLocal" class="col-4">Local Link</label>
+                        <input type="text" class="form-control col-8" id="imgLinkLocal" placeholder="">
+                        <div class="col-12">
+                            <button type="button" class="btnLocalize btn btn-outline-warning btn-block float-right">Localize Image</button>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img id="imgLink" class="img-fluid imgLink" src="http://tinyurl.com/y8lswq57">
                     </div>
                 </div>
-                <div class="col-4">
-                    <img id="imgLink" class="img-fluid imgLink" src="http://tinyurl.com/y8lswq57">
-                </div>
-            </div>
-            <!-- /IMG CONTROLS -->
+                <!-- /IMG CONTROLS -->
 
 
-            <div class="container-fluid">
+
                 <!-- PART NAME -->
                 <div class="form-group row">
-                    <label for="partName" class="partNameLabel col-3">Part name</label>
-                    <input type="text" class="form-control partNameInput col-9" id="partName" placeholder="">
+                    <label for="partName" class="col-3">Part name</label>
+                    <input type="text" class="form-control col-9" id="partName" placeholder="">
                 </div>
                 <!-- /PART NAME -->
 
@@ -55,8 +54,8 @@
 
                 <!-- MAKES -->
                 <div class="form-group row">
-                    <label for="make" class="partNameLabel col-3">Make</label>
-                    <select class="form-control col-9" id="make" placeholder="--select--">
+                    <label for="make" class="col-3">Make</label>
+                    <select class="form-control col-4" id="make" placeholder="--select--">
                         <!--
                         <option>1</option>
                         <option>2</option>
@@ -65,13 +64,14 @@
                         <option>5</option>
                         -->
                     </select>
+                    <button id="mngMakes" type="button" class="btn btn-outline-info col-2 mngMakes"> Manage</button>
                 </div>
                 <!-- /MAKES -->
 
                 <!-- MODELS -->
                 <div class="form-group row">
                     <label for="make" class="col-3">Models</label>
-                    <select multiple class="form-control col-6" id="make">
+                    <select multiple class="form-control col-6" id="models">
                         <!--
                         <option>1</option>
                         <option>2</option>
@@ -89,12 +89,13 @@
 
                 <!-- COLORS / INSTALL TIME -->
                 <div class="form-group row">
-                    <label for="partName" class="partNameLabel col-3">Color</label>
-                    <input type="text" class="form-control partNameInput col-2" id="partName" placeholder="">
-                    <label for="partDesc" class="col-3">Install Time</label>
-                    <div class="input-group col-4 inpgrp1">
-                        <input type="text" class="form-control partNameInput" id="partName" placeholder="">
-                        <select class="form-control" id="make">
+                    <label for="color" class="col-3">Color</label>
+                    <input type="text" class="form-control col-3" id="color" placeholder="">
+                    <button id="mngColor" class="btn btn-outline-info col-1">Manage</button>
+                    <label for="partDesc" class="col-2">Install Time</label>
+                    <div class="input-group col-3 inpgrp1">
+                        <input type="text" class="form-control" id="instTime" placeholder="">
+                        <select class="form-control" id="instTimeUnits">
                             <option>Minutes</option>
                             <option>Hours</option>
                         </select>
@@ -104,17 +105,18 @@
 
                 <!-- CATEGORY / PRICES -->
                 <div class="form-group row">
-                    <label for="cat" class="partNameLabel col-3">Category</label>
-                    <input type="text" class="form-control partNameInput col-4" id="cat" placeholder="">
+                    <label for="cat" class="col-3">Category</label>
+                    <input type="text" class="form-control col-3" id="cat" placeholder="">
+                    <button class="btn btn-outline-info col-1">Manage</button>
                     <label for="price" class="col-3">Price</label>
-                    <input type="text" class="form-control partNameInput col-2" id="price" placeholder="">
+                    <input type="text" class="form-control col-2" id="price" placeholder="">
                 </div>
                 <!-- /CATEGORY / PRICES -->
 
                 <!-- GUARENTEE -->
                 <div class="form-group row">
-                    <label for="grnt" class="partNameLabel col-3">Guarantee</label>
-                    <select class="form-control col-4" id="make">
+                    <label for="grnt" class="col-3">Guarantee</label>
+                    <select class="form-control col-3" id="grnt">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -122,8 +124,9 @@
                         <option>5</option>
                         <option>6</option>
                     </select>
-                    <label for="price" class="col-3">Period</label>
-                    <select class="form-control col-2" id="make">
+                    <button class="btn btn-outline-info col-1">Manage</button>
+                    <label for="grntPeriod " class="col-3">Period</label>
+                    <select class="form-control col-2" id="grntPeriod">
                         <option>Months</option>
                         <option>Years</option>
                         <option>None</option>
