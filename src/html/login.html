@@ -1,17 +1,43 @@
-<div id="login" class="login bg-success">
-  <h1 class="text-center">TQ Admin Console</h1>
-  <div class="form-group">
-    <label for="userName">Username</label>
-    <input type="text" class="form-control" name="username" id="userName"
-      placeholder="Username">
-  </div>
+<!doctype html>
+<html id="loginPage">
+  <div id="login" class="login bg-success">
+    <h1 class="text-center">TQ Admin Console</h1>
+    <div class="form-group">
+      <label for="userName">Username</label>
+      <input type="text" class="form-control" name="username" id="userName"
+        data-toggle="tooltip" data-placement="right" title="Username is case
+        sensitive" placeholder="Username">
+    </div>
 
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input id="password" type="password" class="form-control" name="password"
-      id="password"
-      placeholder="Password">
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" class="form-control" name="password"
+        id="password" data-toggle="tooltip" data-placement="right"
+        title="Password
+        is case sensitive" placeholder="Password">
+    </div>
+    <button type="button" name="loginButton" id="loginButton" class="btn
+      btn-primary btn-lg btn-block">LOGIN</button>
   </div>
-  <button type="button" name="loginButton" id="loginButton" class="btn
-    btn-primary btn-lg btn-block">LOGIN</button>
-</div>>
+  <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Invalid Credentials</h5>
+          <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>You have either entered a invalid username or password, note that
+            username and password is case sensitive</p>
+        </div>
+        <div class="modal-footer">
+          <button id="modalOk" type="button" class="btn btn-secondary"
+            data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>

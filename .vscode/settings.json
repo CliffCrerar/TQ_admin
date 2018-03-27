@@ -3,7 +3,6 @@
     "liveServer.settings.host": "127.0.0.1",
     "liveServer.settings.root": "/dist",
     "editor.parameterHints": true,
-    "html.format.enable": true,
     "html.format.indentInnerHtml": true,
     "json.format.enable": true,
     "html.suggest.html5": true,
@@ -21,7 +20,6 @@
     "liveServer.settings.donotShowInfoMsg": false,
     "liveServer.settings.CustomBrowser": "firefox",
     "html.autoClosingTags": true,
-    "html.suggest.ionic": true,
     "css.lint.duplicateProperties": "warning",
     "css.lint.compatibleVendorPrefixes": "warning",
     "css.lint.emptyRules": "warning",
@@ -29,5 +27,10 @@
     "css.validate": true,
     "git.enabled": true,
     "git.ignoreLegacyWarning": true,
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "prettier.singleQuote": true,
+    "npm-intellisense.importQuotes": "'",
+    "html.format.contentUnformatted": "pre,code,textarea",
+    "html.format.enable": true,
+    "html.format.wrapAttributes": "auto"
 }
