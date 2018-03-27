@@ -3,7 +3,6 @@
     "liveServer.settings.host": "127.0.0.1",
     "liveServer.settings.root": "/dist",
     "editor.parameterHints": true,
-    "html.format.indentInnerHtml": true,
     "json.format.enable": true,
     "html.suggest.html5": true,
     "html.trace.server": "verbose",
@@ -30,7 +29,5 @@
     "git.ignoreLimitWarning": true,
     "prettier.singleQuote": true,
     "npm-intellisense.importQuotes": "'",
-    "html.format.contentUnformatted": "pre,code,textarea",
     "html.format.enable": true,
-    "html.format.wrapAttributes": "auto"
 }

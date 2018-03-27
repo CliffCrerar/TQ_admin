@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:26:29 
- * Last modified  : 2018-03-26 23:58:02
+ * Last modified  : 2018-03-27 03:56:58
  */
 
 .workSpace {
@@ -22,4 +22,8 @@
 .card2 {
   margin-top: 1vh;
   height: 100%;
+}
+
+.imgSettings {
+  /*width: 100%;*/
 }

@@ -1,5 +1,3 @@
-import { request } from 'https';
-
 /**
  * TQ Admin Console
  *
@@ -11,17 +9,27 @@ import { request } from 'https';
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:27:09 
- * Last modified  : 2018-03-27 02:47:13
+ * Last modified  : 2018-03-27 03:50:02
  */
+require('webpack-jquery-ui');
+require('webpack-jquery-ui/css');
 
 /* DEV CODE */
 
-$('#testButton').on('click', () => {
-  console.log('Test Button Click');
+$(document).ready(() => {
+  //console.log('Test Button Click');
   const getNumbers = require('./getNumbers');
   getNumbers();
   /* AUTOCOMPLETE PART NUMBERS 8*/
-  console.log(typeof localStorage.partNumbers.split(','));
+  ///console.log(typeof localStorage.partNumbers.split(','));
+  $('#partNumberInput').autocomplete({
+    source: localStorage.partNumbers.split(',')
+  });
+  $('#partNumberInput').autocomplete('enable');
 });
 
 /* DEV CODE */
+
+$('#showPart').on('click', () => {
+  console.log('get part click');
+});

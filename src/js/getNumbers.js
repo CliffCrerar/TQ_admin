@@ -9,11 +9,11 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-27 00:48:46 
- * Last modified  : 2018-03-27 02:09:28
+ * Last modified  : 2018-03-27 03:06:36
  */
 const url = require('./reqUrl');
 module.exports = () => {
-  console.log(url);
+  //console.log(url);
   $.ajax({
     url: url + 'pNumbers',
     method: 'GET',
@@ -21,7 +21,7 @@ module.exports = () => {
     contentType: 'text/plain',
     dataType: 'text',
     success: (data, status) => {
-      console.log(status);
+      //console.log(status);
       localStorage.partNumbers = data;
     },
     error: (err, xhr, some) => {

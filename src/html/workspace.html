@@ -1,30 +1,89 @@
 <!doctype html>
 <html>
-    <div id="workSpace" class="workSpace container">
-        <div class="card card1">
-            <div class="card-body">
-                <h1 class="text-center">TQ Admin Console - Workspace</h1>
-            </div>
-        </div>
-        <div class="card card2">
-            <form class="form-inline card-body">
-                <div class="form-group mb-2">
-                    <label for="staticEmail2" class="sr-only">Part number</label>
-                    <input type="text" readonly class="form-control-plaintext
-                        text-right"
-                        id="partNumber" value="Part Number:">
-                </div>
-                <div class="form-group mx-sm-3 mb-2">
-                    <label for="partNumberLabel" class="sr-only">Type Number
-                        here</label>
-                    <input type="text" class="form-control"
-                        id="partNumberInput" placeholder="Type here">
-                </div>
-                <button class="btn btn-primary mb-2">Show Part
-                    Detail</button>
-            </form>
-            <button id="testButton">TEST PART NUMBER</button>
+<div id="workSpace" class="workSpace container">
+    <div class="card card1">
+        <div class="card-body">
+            <h1 class="text-center">TQ Admin Console - Workspace</h1>
         </div>
     </div>
+    <div class="card card2">
+        <form class="form-inline card-body">
+            <div class="form-group mb-2">
+                <label for="staticEmail2" class="sr-only">Part number</label>
+                <input type="text" readonly class="form-control-plaintext text-right" id="partNumber" value="Part Number:">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="partNumberLabel" class="sr-only">Type Number here</label>
+                <input type="text" class="form-control" id="partNumberInput" placeholder="Type here">
+            </div>
+            <button id="showPart" type="button" class="btn btn-primary mb-2">Show Part Detail</button>
+            <div id="img" class="imgSettings row">
+                <div class="col-8 row">
+                    <label for="partName" class="partNameLabel col-4">Part name</label>
+                    <input type="text" class="form-control col-8" id="partNumberInput" placeholder="Type here">
+                    <label for="partName" class="partNameLabel col-4">Part name</label>
+                    <input type="text" class="form-control col-8" id="partNumberInput" placeholder="Type here">
+                </div>
+
+                <div class="col-4">
+                    <img id="imgLink" class="img-fluid imgLink" src="http://tinyurl.com/y8lswq57">
+                </div>
+
+            </div>
+
+            <div class="container-fluid">
+                <div class="form-group row">
+                    <label for="partName" class="partNameLabel col-3">Part name</label>
+                    <input type="text" class="form-control partNameInput col-9" id="partName" placeholder="Example input">
+                </div>
+                <div class="form-group row">
+                    <label for="partDesc" class="col-3">Part description</label>
+                    <textarea class="form-control col-9" id="partDesc" rows="3"></textarea>
+                </div>
+                <div class="form-group row">
+                    <label for="make" class="partNameLabel col-3">Make</label>
+                    <select class="form-control col-9" id="make">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <label for="make" class="col-3">Models</label>
+                    <select multiple class="form-control col-6" id="make">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <div class="btn-group-vertical col-3">
+                        <button type="button" class="btn btn-success">Add model</button>
+                        <button type="button" class="btn btn-danger">Remove model</button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="partName" class="partNameLabel col-3">Color</label>
+                    <input type="text" class="form-control partNameInput col-4" id="partName" placeholder="Example input">
+                    <label for="partDesc" class="col-3">Install Time</label>
+                    <input type="text" class="form-control partNameInput col-2" id="partName" placeholder="Example input">
+                </div>
+                <div class="form-group row">
+                    <label for="partName" class="partNameLabel col-3">Category</label>
+                    <input type="text" class="form-control partNameInput col-4" id="partName" placeholder="Example input">
+                    <label for="partDesc" class="col-3">Price</label>
+                    <input type="text" class="form-control partNameInput col-2" id="partName" placeholder="Example input">
+                </div>
+                <div class="form-group row">
+                    <label for="partName" class="partNameLabel col-3">Guarantee</label>
+                    <input type="text" class="form-control partNameInput col-4" id="partName" placeholder="Example input">
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 </html>
