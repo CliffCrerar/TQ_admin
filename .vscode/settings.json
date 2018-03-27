@@ -30,4 +30,9 @@
     "prettier.singleQuote": true,
     "npm-intellisense.importQuotes": "'",
     "html.format.enable": true,
+    "editor.autoIndent": true,
+    "editor.detectIndentation": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "html.format.indentInnerHtml": true,
 }

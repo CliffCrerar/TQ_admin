@@ -1,0 +1,74 @@
+{
+    "OBJ1": {
+        "level_code": "3",
+        "username": "RickS",
+        "first_name": "Rick",
+        "last_name": "Sanchez",
+        "password": "Admin123",
+        "company": "Dev Company",
+        "email": "RickS@acl.co.za",
+        "title": "Consultant",
+        "access_level": "Administrator",
+        "description": "Full Access"
+    },
+    "OBJ2": {
+        "level_code": "2",
+        "username": "VaughanS",
+        "first_name": "Vaughan",
+        "last_name": "Smith",
+        "password": "Review123",
+        "company": "Dev Compnay",
+        "email": "VaughanS@retailcorp.com",
+        "title": "Finance Manager",
+        "access_level": "Reviewer",
+        "description": "Full Access excpet for user profile editing"
+    },
+    "OBJ3": {
+        "level_code": "1",
+        "username": "SarahJ",
+        "first_name": "Sarah",
+        "last_name": "Jones",
+        "password": "Prep123",
+        "company": "Dev Compnay",
+        "email": "SarahJ@retailcorp",
+        "title": "Accountant",
+        "access_level": "Preparer",
+        "description": "Full Access to submissions sections only. View other sections"
+    },
+    "OBJ4": {
+        "level_code": "3",
+        "username": "RickS",
+        "first_name": "Rick",
+        "last_name": "Sanchez",
+        "password": "Admin123",
+        "company": "Dev Company",
+        "email": "RickS@acl.co.za",
+        "title": "Consultant",
+        "access_level": "Administrator",
+        "description": "Full Access"
+    },
+    "OBJ5": {
+        "level_code": "2",
+        "username": "VaughanS",
+        "first_name": "Vaughan",
+        "last_name": "Smith",
+        "password": "Review123",
+        "company": "Dev Compnay",
+        "email": "VaughanS@retailcorp.com",
+        "title": "Finance Manager",
+        "access_level": "Reviewer",
+        "description": "Full Access excpet for user profile editing"
+    },
+    "OBJ6": {
+        "level_code": "1",
+        "username": "SarahJ",
+        "first_name": "Sarah",
+        "last_name": "Jones",
+        "password": "Prep123",
+        "company": "Dev Compnay",
+        "email": "SarahJ@retailcorp",
+        "title": "Accountant",
+        "access_level": "Preparer",
+        "description": "Full Access to submissions sections only. View other sections"
+    }
+}

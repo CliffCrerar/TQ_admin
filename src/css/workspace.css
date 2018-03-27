@@ -9,42 +9,53 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:26:29 
- * Last modified  : 2018-03-27 06:03:15
+ * Last modified  : 2018-03-27 19:02:41
  */
 
+.ui-menu {
+    height: 50%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .workSpace {
-  display: none;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .card1 {
-  margin-top: 1vh;
+    margin-top: 1vh;
 }
+
 .card2 {
-  margin-top: 1vh;
-  height: 100%;
+    margin-top: 1vh;
+    height: 100%;
 }
 
 .form-control {
-  min-height: 24px !important;
-  margin: 5px 0 5px 0 !important;
+    min-height: 24px !important;
+    margin: 5px 0 5px 0 !important;
 }
 
 .imgSettings {
-  margin-left: 0px;
-  width: 100% !important;
-  border: solid 2px black;
-  border-radius: 5px;
+    margin-left: 0px;
+    width: 100% !important;
+    border: solid 2px black;
+    border-radius: 5px;
 }
 
 .btnLocalize {
-  width: 66%;
-  margin: 0 0 5px 0;
+    width: 66%;
+    margin: 0 0 5px 0;
 }
 
 .inpgrp1 {
-  padding-right: 0px !important;
+    padding-right: 0px !important;
 }
 
 .imgLink:hover {
-  transform: scale(2);
+    transform: scale(2);
 }

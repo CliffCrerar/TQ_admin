@@ -5,25 +5,26 @@
  *
  * long description for the file
  *
- * @summary Get a list of part numbers
+ * @summary Send part number and recieve part data
  * @author Cliff Crerar
  *
- * Created at     : 2018-03-27 00:48:46 
- * Last modified  : 2018-03-27 19:05:37
+ * Created at     : 2018-03-27 19:04:39 
+ * Last modified  : 2018-03-27 19:19:40
  */
+
 const url = require('./reqUrl');
-module.exports = () => {
+module.exports = pNumber => {
     //console.log(url);
-    localStorage.clear();
     $.ajax({
-        url: url + 'pNumbers',
-        method: 'GET',
+        url: url + 'prt',
+        method: 'POST',
         origin: '*',
         contentType: 'text/plain',
         dataType: 'text',
+        data: pNumber,
         success: (data, status) => {
-            //console.log(status);
-            localStorage.partNumbers = data;
+            console.log(data);
+            console.log(status);
         },
         error: (err, xhr, some) => {
             console.log(err);
