@@ -35,4 +35,11 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
     "html.format.indentInnerHtml": true,
+    "editor.links": true,
+    "editor.matchBrackets": true,
+    "editor.occurrencesHighlight": true,
+    "editor.renderIndentGuides": true,
+    "editor.renderLineHighlight": "line",
+    "editor.smoothScrolling": true,
+    "workbench.editor.showIcons": true,
 }

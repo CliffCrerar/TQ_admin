@@ -9,53 +9,98 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:26:29 
- * Last modified  : 2018-03-27 19:02:41
+ * Last modified  : 2018-03-28 03:53:06
  */
 
 .ui-menu {
-    height: 50%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+  height: 50%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .workSpace {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .card1 {
-    margin-top: 1vh;
+  margin-top: 1vh;
 }
 
 .card2 {
-    margin-top: 1vh;
-    height: 100%;
+  margin-top: 1vh;
+  height: 100%;
 }
 
 .form-control {
-    min-height: 24px !important;
-    margin: 5px 0 5px 0 !important;
+  min-height: 24px !important;
+  margin: 5px 0 5px 0 !important;
 }
 
 .imgSettings {
-    margin-left: 0px;
-    width: 100% !important;
-    border: solid 2px black;
-    border-radius: 5px;
+  margin-left: 0px;
+  width: 100% !important;
+  border: solid 2px black;
+  border-radius: 5px;
 }
 
 .btnLocalize {
-    width: 66%;
-    margin: 0 0 5px 0;
+  width: 66%;
+  margin: 0 0 5px 0;
 }
 
 .inpgrp1 {
-    padding-right: 0px !important;
+  padding-right: 0px !important;
 }
 
-.imgLink:hover {
-    transform: scale(2);
+.imgLink {
+  position: relative;
+  z-index: 1000;
+}
+
+.disabled {
+  background-color: rgb(230, 227, 227);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.leftArrow {
+  position: absolute;
+  top: 50%;
+  left: -10%;
+}
+
+.leftArrow:hover {
+  transform: scale(1.2);
+}
+
+.rightArrow {
+  position: absolute;
+  top: 50%;
+  right: -10%;
+}
+
+.rightArrow:hover {
+  transform: scale(1.2);
+}
+
+.po-btn {
+  margin-top: 5px;
+  width: 60px !important;
+}
+
+.addModels.modal {
+  position: relative;
+  z-index: 5000;
+  top: 30%;
+}
+
+.modal-content {
+  padding: 5%;
+}
+
+.mSelect {
+  overflow: scroll;
 }

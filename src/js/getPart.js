@@ -9,27 +9,35 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-27 19:04:39 
- * Last modified  : 2018-03-27 19:19:40
+ * Last modified  : 2018-03-27 20:38:16
  */
 
 const url = require('./reqUrl');
+const populateForm = require('./popForm');
 module.exports = pNumber => {
-    //console.log(url);
-    $.ajax({
-        url: url + 'prt',
-        method: 'POST',
-        origin: '*',
-        contentType: 'text/plain',
-        dataType: 'text',
-        data: pNumber,
-        success: (data, status) => {
-            console.log(data);
-            console.log(status);
-        },
-        error: (err, xhr, some) => {
-            console.log(err);
-            console.log(xhr);
-            console.log(some);
-        },
-    });
+  //console.log(url);
+  $.ajax({
+    url: url + 'prt',
+    method: 'POST',
+    origin: '*',
+    contentType: 'text/plain',
+    dataType: 'text',
+    data: pNumber,
+    success: (data, status) => {
+      console.log(data);
+      console.log(status);
+      if (data == 'notExist') {
+        alert(
+          'Requested part does not exist, please enter a valid part number'
+        );
+      } else {
+        populateForm(data);
+      }
+    },
+    error: (err, xhr, some) => {
+      console.log(err);
+      console.log(xhr);
+      console.log(some);
+    }
+  });
 };

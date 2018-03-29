@@ -9,26 +9,31 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-27 00:48:46 
- * Last modified  : 2018-03-27 19:05:37
+ * Last modified  : 2018-03-28 00:52:42
  */
+
 const url = require('./reqUrl');
 module.exports = () => {
-    //console.log(url);
-    localStorage.clear();
-    $.ajax({
-        url: url + 'pNumbers',
-        method: 'GET',
-        origin: '*',
-        contentType: 'text/plain',
-        dataType: 'text',
-        success: (data, status) => {
-            //console.log(status);
-            localStorage.partNumbers = data;
-        },
-        error: (err, xhr, some) => {
-            console.log(err);
-            console.log(xhr);
-            console.log(some);
-        },
-    });
+  //console.log(url);
+  $.ajax({
+    url: url + 'pNumbers',
+    method: 'GET',
+    origin: '*',
+    contentType: 'text/plain',
+    dataType: 'text',
+    success: (data, status) => {
+      //console.log(status);
+      //console.log(data);
+      window.partNumbers = data.split(',');
+      $('#partNumber').autocomplete({
+        source: data.split(',')
+      });
+      $('#partNumber').autocomplete('enable');
+    },
+    error: (err, xhr, some) => {
+      console.log(err);
+      console.log(xhr);
+      console.log(some);
+    }
+  });
 };
