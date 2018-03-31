@@ -1,5 +1,23 @@
 <!doctype html>
 <html>
+    <!-- Alerts -->
+
+    <!-- ALERT NO PART NUMBER FOR SHOW PART -->
+    <div id="noPartNumber" class="alert alert-warning userAlert" role="alert">
+        You must enter a valid part number before clicking the "SHOW" button.
+        <button type="button" class="close hideAlert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- ALERT NEW PART ENTRY NOT COMPLETE -->
+    <div id="newPartEntryIncomplete" class="alert alert-warning userAlert" role="alert">
+        You have not completed all the data see the red borders for an indication.
+        <button type="button" class="close hideAlert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <!-- /Alerts -->
     <div id="workSpace" class="workSpace container">
         <div class="leftArrow">
             <i class="fa fa-arrow-circle-left fa-5x" aria-hidden="true"></i>
@@ -23,11 +41,10 @@
                         <div class="btn-group col-6 row">
                             <button id="showPart" type="button" class="btn btn-primary col-3" tabindex="1">SHOW</button>
                             <button id="addNew" type="button" class="btn btn-success col-3">+NEW</button>
-                            <button id="edit_save" type="button" class="btn btn-warning col-5 disabled" tabindex="2">
+                            <button id="edit_save" type="button" data-trigger="focus" class="btn btn-warning col-5 disabled" tabindex="2">
                                 <b>EDIT</b>
                             </button>
                         </div>
-
                     </div>
                     <!-- /PART NUMBER -->
 
@@ -74,7 +91,7 @@
 
                     <!-- MODELS -->
                     <div class="form-group row">
-                        <label for="make" class="col-3">Models</label>
+                        <label for="models" class="col-3">Models</label>
                         <select multiple class="mSelect form-control col-6 dis disabled" id="models" tabindex="8" data-toggle="popover">
                             <!--
                         <option>1</option>
@@ -157,5 +174,7 @@
         </div>
     </div>
     <!-- SMALL MODAL FOR ADDING MODELS -->
+    <div class="alertOverlay">
+    </div>
 
 </html>

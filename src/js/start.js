@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-22 22:12:05 
- * Last modified  : 2018-03-27 23:37:25
+ * Last modified  : 2018-03-29 18:49:25
  */
 
 /* LOAD HTML
@@ -26,3 +26,6 @@ $(function() {
 $('body').css('height', screen.height);
 $('body').prepend(require('../html/workspace.html'));
 $('.workSpace').css('display', 'block');
+$('.alertOverlay')
+  .css('height', screen.availHeight)
+  .css('width', screen.availWidth);

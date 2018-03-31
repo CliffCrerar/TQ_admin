@@ -9,15 +9,16 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:27:09 
- * Last modified  : 2018-03-28 03:56:04
+ * Last modified  : 2018-03-29 20:12:31
  */
 import 'bootstrap';
 import 'popper.js';
 require('webpack-jquery-ui');
 require('webpack-jquery-ui/css');
+require('./alerts');
 const modeSwitch = require('./modes');
 
-$('[data-toggle="popover"]').popover('enable');
+$('[data-toggle="popover"]').popover();
 
 const getPart = require('./getPart'); // server request that gets part data using part number
 let consoleMode = 'view';
@@ -37,6 +38,50 @@ $('#models').on('click', ev => {
 
 /* /DEV CODE */
 
+/* CONFIGURE ALERTS */
+
+// Hide alert
+$('.hideAlert').click(() => {
+  $('.alert').slideUp();
+  $('.alertOverlay').fadeOut();
+  $('.alertOverlay').css('z-index', '-100');
+});
+
+// Show alert
+const showAlert = userAlert => {
+  $(userAlert).slideDown();
+  $('.alertOverlay').css('z-index', '5900').fadeIn();
+};
+
+/* DATA VALIDATION */
+const validate = () => {
+  var completeInputs = true;
+  var completeSelects = true;
+  // validate inputs and textareas
+  $('input,textarea').each((i, el) => {
+    $(el).css('border', 'rgb(230, 227, 227)');
+    if ($(el).val() == '') {
+      completeInputs = false;
+      $(el).css('border', 'red');
+    }
+  });
+  // validate selects
+  $('select').children().each((i, el) => {
+    $(el).css('border', 'rgb(230, 227, 227)');
+    if ($(el).val() == '') {
+      completeSelects = false;
+      $(el).css('border', 'red');
+    }
+  });
+  // switch to edit mode or fail validation
+  if (completeInputs && completeSelects) {
+    modeSwitch.viewMode();
+    consoleMode = 'view';
+  } else {
+    showAlert($('#newPartEntryIncomplete'));
+  }
+};
+
 /* CONFIGURE TOOLTIPS */
 
 // Show tool tip on how to use edit button
@@ -44,7 +89,7 @@ var tt1 =
   'You must call a part first by typing in the part number before you can use edit mode';
 $('#edit_save')
   .attr('data-toggle', 'popover')
-  .attr('data-placement', 'top')
+  .attr('data-placement', 'right')
   .attr('data-original-title', 'USING EDIT MODE')
   .attr('data-content', tt1);
 $('#edit_save').popover('show');
@@ -75,7 +120,8 @@ $('#showPart').on('click', () => {
     console.log('Part number selected');
     getPart(pNumber);
   } else {
-    alert('You must select a valid part number');
+    showAlert($('#noPartNumber'));
+    //alert('You must select a valid part number');
   }
 });
 /* POPULATE FORM ON ENTER */
@@ -88,7 +134,12 @@ $('#partNumber').keypress(ev => {
 /* SWITH TO EDIT MODE */
 $('#edit_save').on('click', () => {
   if (consoleMode == 'view') {
+    // check if save button is disabled and enable
     modeSwitch.editMode();
+    consoleMode = 'edit';
+    if ($('#edit_save').hasClass('disabled')) {
+      $('#edit_save').removeClass('disabled');
+    }
     $('#models').popover('show');
     $('.popover-body').append(
       '<br><button id="poBtnMTS" class="po-btn btn btn-success btn-sm">Got it</button>'
@@ -96,22 +147,25 @@ $('#edit_save').on('click', () => {
     $('#poBtnMTS').on('click', () => {
       $('#models').popover('dispose');
     });
-    consoleMode = 'edit';
-  } else if (consoleMode == 'edit') {
-    modeSwitch.viewMode();
-    consoleMode = 'view';
+    validate();
   }
 });
 
 /* SWITCH TO ADD MODE */
 $('#addNew').on('click', () => {
   modeSwitch.addMode();
-  consoleMode = 'add';
+  if (consoleMode == 'add') {
+    modeSwitch.viewMode();
+    consoleMode = 'view';
+  } else {
+    consoleMode = 'add';
+  }
 
   // Start for completion promting
   // $('#workSpace').popover({ html: true });
   // COMPLETING PART NUMBER
-  $('#partNumber').autocomplete('disable'); // turn off autocomplete while in add mode
+  // turn off autocomplete while in add mode
+  /*
   $('#partNumber').attr('data-original-title', 'PART NUMBER');
   $('#partNumber').attr(
     'data-content',
@@ -161,21 +215,24 @@ $('#addNew').on('click', () => {
         $('#edit_save').popover('dispose');
       }, 10000);
     }
-  });
+  });*/
 });
 
 /* ADDING AND DELETING MODELS */
-
 $('#addModel').on('click', () => {
-  $('#addModels').modal('show');
+  Promise.resolve($('#addModels').modal('show')).then(() => {
+    $('#btnAddModel').on('click', () => {
+      var newModel = $('#modelInput').val();
+      $('#models').append('<options>' + newModel + '</options>');
+      //$('#models').multiselect('rebuild');
+      $('#modelInput').val('');
+      $('#addModels').modal('hide');
+    });
+    $('#btnAddCancel').modal('hide');
+  });
 });
+$('#remModel').on('click', () => {});
 
-$('#btnAddModel').on('click', () => {
-  var newModel = $('#modelInput').val();
-  $('#models').append('<options>' + newModel + '</options>');
-  //$('#models').multiselect('rebuild');
-  $('#modelInput').val('');
-  $('#addModels').modal('hide');
+$('.popover-dismiss').popover({
+  trigger: 'focus'
 });
-
-$('#btnAddCancel');

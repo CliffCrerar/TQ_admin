@@ -9,15 +9,19 @@ module.exports = {
     $('#edit_save').removeClass('btn-danger').removeClass('col-10');
     $('#edit_save').addClass('btn-warning').addClass('col-4');
     $('#edit_save').html('<b>EDIT<b>');
+    $('#partNumber').autocomplete('enable');
   },
   addMode() {
+    $('.dis').removeClass('disabled');
+    $('.dis').val('');
+    $('.mSelect').children().remove();
     $('#showPart').hide();
     $('#addNew').removeClass('btn-success').removeClass('col-3');
     $('#addNew').addClass('btn-dark').addClass('col-5').html('CANCEL');
     $('#edit_save').removeClass('btn-warning').removeClass('col-4');
     $('#edit_save').addClass('btn-danger').addClass('col-5').html('SAVE');
-    $('#partNumber').val('');
     $('#partNumber').focus();
+    $('#partNumber').autocomplete('disable');
   },
   editMode() {
     $('.dis').removeClass('disabled');
