@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 15:52:23 
- * Last modified  : 2018-04-01 15:58:36
+ * Last modified  : 2018-04-01 19:08:19
  */
 const url = require('./reqUrl');
 module.exports = (partToSave, saveType) => {
@@ -20,7 +20,7 @@ module.exports = (partToSave, saveType) => {
     origin: '*',
     contentType: 'text/plain',
     dataType: 'text',
-    data: partToSave,
+    data: JSON.stringify(partToSave),
     success: (data, status) => {
       console.log(data);
       console.log(status);

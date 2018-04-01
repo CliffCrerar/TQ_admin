@@ -4,7 +4,7 @@ module.exports = {
   editMode() {
     var editBtns = require('../html/editModeBtn.html');
     //console.log(btns);
-    console.log(editBtns);
+    //console.log(editBtns);
     $('.dis').removeClass('disabled').removeAttr('readonly');
     $('#viewModeBtns').remove();
     $('#partEntry').append(editBtns);

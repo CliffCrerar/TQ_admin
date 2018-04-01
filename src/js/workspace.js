@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:27:09 
- * Last modified  : 2018-04-01 16:01:13
+ * Last modified  : 2018-04-01 19:11:40
  */
 import 'bootstrap';
 import 'popper.js';
@@ -18,10 +18,13 @@ import 'webpack-jquery-ui/css';
 import modeSwitch from './modes'; // switch modes commands
 import getPart from './getPart'; // server request that gets part data using part number
 import savePart from './savePart'; // function that writes to the web server
+import formToObj from './formToPartObj'; // get function that turns form to object
+import showAlert from './alerts'; // get show alert function
 
 $('[data-toggle="popover"]').popover();
 
 let consoleMode = 'view';
+let msgTimeout = 2000;
 
 /* DEV CODE */
 
@@ -39,21 +42,6 @@ $('#models').on('click', ev => {
 */
 
 /* /DEV CODE */
-
-/* CONFIGURE ALERTS */
-
-// Hide alert
-$('.hideAlert').click(() => {
-  $('.alert').slideUp();
-  $('.alertOverlay').fadeOut();
-  $('.alertOverlay').css('z-index', '-100');
-});
-
-// Show alert
-const showAlert = userAlert => {
-  $(userAlert).slideDown();
-  $('.alertOverlay').css('z-index', '5900').fadeIn();
-};
 
 /* CONFIGURE TOOLTIPS */
 
@@ -86,7 +74,10 @@ $('#edit').on('click', () => {
     .then(() => {
       consoleMode = 'edit'; // set console variable mode to edit
       $('#cancel').on('click', () => {});
-      $('#save').on('click', () => {});
+      $('#save').on('click', () => {
+        console.log(formToObj());
+        savePart(formToObj(), 'savePart');
+      });
     })
     .catch(err1 => {
       console.error('ERROR while switching to editmode: ', err1);
@@ -98,5 +89,26 @@ $(document).ready(() => {
   $('#edit').popover('show');
   setTimeout(() => {
     $('#edit').popover('hide');
-  }, 5000);
+  }, msgTimeout);
+});
+
+/* HIDE ALERTS */
+$('.hideAlert').click(() => {
+  $('.alert').slideUp();
+  $('.alertOverlay').fadeOut();
+  $('.alertOverlay').css('z-index', '-100');
+});
+
+/* CONFIGURE KEY STROKES */
+$('body').on('keydown', ev => {
+  console.log(ev.originalEvent.key);
+  var key = ev.originalEvent.key;
+  switch (key) {
+    case 'Enter':
+      $('#showPart').click();
+      break;
+    case 'Escape':
+      $('.close').click();
+      break;
+  }
 });

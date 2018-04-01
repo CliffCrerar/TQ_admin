@@ -9,27 +9,48 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 16:05:18 
- * Last modified  : 2018-04-01 16:10:17
+ * Last modified  : 2018-04-01 18:01:33
  */
 
 module.exports = () => {
+  var models = []; // declare variable to store models
+  // populate models array from the model options
+  $('#models').children().each((i, el) => {
+    //console.log(i, $(el).val());
+    models.push($(el).val());
+  });
+  // take form values and populate JS object
   var part = {
-    [$('#partNumber').val().toString()]: {}
+    [$('#partNumber').val().toString()]: {
+      partNum: $('#partNumber').val(),
+      partName: $('#partName').val(),
+      partDesc: $('#partDesc').val(),
+      make: $('#make').val(),
+      models: models,
+      imgLink: $('#imgLink').val(),
+      imgLinkLocal: $('#imgLinkLocal').val(),
+      colors: $('#color').val(),
+      grnt: $('#grnt').val() + ' ' + $('#grntPeriod').val(),
+      instTime: $('#instTime').val(),
+      price: $('#price').val(),
+      cat: $('#cat').val()
+    }
   };
-  $('#imgLink').val(p.imgLink);
-  $('#imgLinkLocal').val();
-  $('#showImg').attr('src', p.imgLink);
-  $('#partName').val(p.partName);
-  $('#partDesc').val(p.partDesc);
-  $('#make').val(p.make);
-  for (var i = 0; i < p.models.length; i++) {
-    $('#models').append('<option>' + p.models[i] + '</option>');
-  }
-  $('#color').val(p.colors);
-  $('#instTime').val(p.instTime);
-  $('#cat').val(p.cat);
-  $('#price').val(p.price);
-  $('#grnt').val(p.grnt.split(' ')[0]);
-  $('#grntPeriod').val(p.grnt.split(' ')[1]);
-  $('#edit_save').removeClass('disabled');
+  return part; // return the parts object
 };
+
+/*
+	"A090025": {
+		"partNum": "A090025",
+		"partName": "Bash plate",
+		"partDesc": "Made off aliminuim. Protects the engine casing from lose protectiles and road hazards must have for off roading",
+		"make": "BMW",
+		"models": ["F650GS", "F700GS", "F800GS", "F800GSA"],
+		"imgLink": "http://tinyurl.com/y8ecotqe",
+		"colors": "Black",
+		"grnt": "1 Year",
+		"instTime": 45,
+		"price": 2295,
+		"cat": "BP"
+    },
+*/
