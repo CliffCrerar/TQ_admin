@@ -9,138 +9,187 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:26:29 
- * Last modified  : 2018-04-01 20:34:01
+ * Last modified  : 2018-04-01 22:33:33
  */
 
 .loadingDiv {
-    position: absolute;
-    z-index: -100;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  display: none;
+  position: fixed;
+  z-index: 7000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .loadingImg {
-    position: relative;
-    border-radius: 50px;
+  position: relative;
+  border-radius: 50px;
 }
 
 .loadingTxt {
-    width: 100%;
-    color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -100;
+  width: 100%;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 7100;
 }
 
 .ui-menu {
-    height: 50%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+  height: 50%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .workSpace {
-    display: none;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .card1 {
-    margin-top: 1vh;
+  margin-top: 1vh;
 }
 
 .userAlert {
-    display: none;
-    position: fixed;
-    width: 100%;
-    z-index: 6000;
-    top: 50%;
-    transform: translateY(-50%);
+  display: none;
+  position: fixed;
+  width: 100%;
+  z-index: 6000;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .alertOverlay {
-    position: fixed;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -100;
-    min-width: 100%;
-    min-height: 100%;
+  position: fixed;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -100;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .card2 {
-    margin-top: 1vh;
-    height: 100%;
+  margin-top: 1vh;
+  height: 100%;
+}
+
+.card3 {
+  margin-top: 1vh;
+  height: 100%;
+}
+
+.card3-body {
+  padding: 5px;
+}
+
+.modeDesc {
+  margin: 0%;
+}
+
+.vMode {
+  color: rgb(0, 204, 0);
+}
+
+.eMode {
+  color: rgb(255, 187, 0);
+}
+
+.aMode {
+  color: rgb(204, 0, 0);
+}
+
+.wsHeading {
+  font-family: black ops one;
 }
 
 .form-control {
-    min-height: 24px !important;
-    margin: 5px 0 5px 0 !important;
+  min-height: 24px !important;
+  margin: 5px 0 5px 0 !important;
+}
+
+.editModeBtns {
+  display: none;
+  width: 50%;
+}
+
+.edtCancelSave {
+  width: 50% !important;
+}
+
+.btn-danger.edtCancelSave {
+  margin-left: -5px !important;
+}
+
+.addModeBtns {
+  display: none;
 }
 
 .imgSettings {
-    margin-left: 0px;
-    width: 100% !important;
-    border: solid 2px black;
-    border-radius: 5px;
+  margin-left: 0px;
+  width: 100% !important;
+  border: solid 2px black;
+  border-radius: 5px;
 }
 
 .btnLocalize {
-    width: 66%;
-    margin: 0 0 5px 0;
+  width: 66%;
+  margin: 0 0 5px 0;
 }
 
 .inpgrp1 {
-    padding-right: 0px !important;
+  padding-right: 0px !important;
 }
 
 .imgLink {
-    position: relative;
-    z-index: 1000;
+  position: relative;
+  z-index: 1000;
 }
 
 .disabled {
-    background-color: rgb(230, 227, 227);
-    pointer-events: none;
-    cursor: not-allowed;
+  background-color: rgb(230, 227, 227);
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .leftArrow {
-    position: absolute;
-    top: 50%;
-    left: -10%;
+  position: fixed !important;
+  top: 20%;
+  left: 5%;
+  z-index: 4000;
 }
 
 .leftArrow:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .rightArrow {
-    position: absolute;
-    top: 50%;
-    right: -10%;
+  position: fixed !important;
+  top: 20%;
+  right: 5%;
+  z-index: 4000;
 }
 
 .rightArrow:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .po-btn {
-    margin-top: 5px;
-    width: 60px !important;
+  margin-top: 5px;
+  width: 60px !important;
 }
 
 .addModels.modal {
-    position: relative;
-    z-index: 5000;
-    top: 30%;
+  position: relative;
+  z-index: 5000;
+  top: 30%;
 }
 
 .modal-content {
-    padding: 5%;
+  padding: 5%;
 }
 
 .mSelect {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
