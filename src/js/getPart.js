@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-27 19:04:39 
- * Last modified  : 2018-03-27 20:38:16
+ * Last modified  : 2018-04-01 16:03:11
  */
 
 const url = require('./reqUrl');
@@ -24,8 +24,8 @@ module.exports = pNumber => {
     dataType: 'text',
     data: pNumber,
     success: (data, status) => {
-      console.log(data);
-      console.log(status);
+      // console.log(data);
+      // console.log(status);
       if (data == 'notExist') {
         alert(
           'Requested part does not exist, please enter a valid part number'

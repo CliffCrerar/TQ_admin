@@ -35,13 +35,13 @@
                 <div class="container-fluid">
 
                     <!-- PART NUMBER -->
-                    <div class="form-group row">
+                    <div id="partEntry" class="form-group row">
                         <label for="partNumber" class="col-3">Part Number</label>
                         <input type="text" class="form-control col-3" id="partNumber" placeholder="Type here" tabindex="0" data-toggle="popover">
-                        <div class="btn-group col-6 row">
-                            <button id="showPart" type="button" class="btn btn-primary col-3" tabindex="1">SHOW</button>
-                            <button id="addNew" type="button" class="btn btn-success col-3">+NEW</button>
-                            <button id="edit_save" type="button" data-trigger="focus" class="btn btn-warning col-5 disabled" tabindex="2">
+                        <div id="viewModeBtns" class="btn-group col-6 row">
+                            <button id="showPart" type="button" class="btn btn-primary col-3" tabindex="0">SHOW</button>
+                            <button id="addNew" type="button" class="btn btn-success col-3" tabindex="1">+NEW</button>
+                            <button id="edit" type="button" class="btn btn-warning col-5 disabled" tabindex="2" data-toggle="popover" data-placement="top">
                                 <b>EDIT</b>
                             </button>
                         </div>
@@ -52,11 +52,12 @@
                     <div id="img" class="imgSettings row">
                         <div class="col-8 row">
                             <label for="imgLink" class="col-4">Web link</label>
-                            <input type="text" class="form-control col-8 dis disabled" id="imgLink" placeholder="" tabindex="3" data-toggle="popover">
+                            <input type="text" class="form-control col-8 dis disabled" id="imgLink" placeholder="" tabindex="3" data-toggle="popover"
+                                readonly>
                             <label for="imgLinkLocal" class="col-4">Local Link</label>
-                            <input type="text" class="form-control col-8 dis disabled" id="imgLinkLocal" placeholder="" data-toggle="popover">
+                            <input type="text" class="form-control col-8 dis disabled" id="imgLinkLocal" placeholder="" data-toggle="popover" readonly>
                             <div class="col-12">
-                                <button type="button" class="btnLocalize btn btn-outline-warning btn-block float-right dis disabled" tabindex="4">Localize Image</button>
+                                <button type="button" class="btnLocalize btn btn-outline-warning btn-block float-right dis disabled" tabindex="4" readonly>Localize Image</button>
                             </div>
                         </div>
                         <div class="col-4">
@@ -68,31 +69,32 @@
                     <!-- PART NAME -->
                     <div class="form-group row">
                         <label for="partName" class="col-3">Part name</label>
-                        <input type="text" class="form-control col-9 dis disabled" id="partName" placeholder="" tabindex="5" data-toggle="popover">
+                        <input type="text" class="form-control col-9 dis disabled" id="partName" placeholder="" tabindex="5" data-toggle="popover"
+                            readonly>
                     </div>
                     <!-- /PART NAME -->
 
                     <!-- PART DESCRIPTION -->
                     <div class="form-group row">
                         <label for="partDesc" class="col-3">Part description</label>
-                        <textarea class="form-control col-9 dis disabled" id="partDesc" rows="3" tabindex="6" data-toggle="popover"></textarea>
+                        <textarea class="form-control col-9 dis disabled" id="partDesc" rows="3" tabindex="6" data-toggle="popover" readonly></textarea>
                     </div>
                     <!-- /PART DESCRIPTION -->
 
                     <!-- MAKES -->
                     <div class="form-group row">
                         <label for="make" class="col-3">Make</label>
-                        <select class="form-control col-4 dis disabled" id="make" placeholder="" tabindex="7" data-toggle="popover">
+                        <select class="form-control col-4 dis disabled" id="make" placeholder="" tabindex="7" data-toggle="popover" readonly>
                             <option selected>None</option>
                         </select>
-                        <button id="mngMakes" type="button" class="btn btn-outline-info col-2 mngMakes dis disabled"> Manage</button>
+                        <button id="mngMakes" type="button" class="btn btn-outline-info col-2 mngMakes dis disabled" readonly> Manage</button>
                     </div>
                     <!-- /MAKES -->
 
                     <!-- MODELS -->
                     <div class="form-group row">
                         <label for="models" class="col-3">Models</label>
-                        <select multiple class="mSelect form-control col-6 dis disabled" id="models" tabindex="8" data-toggle="popover">
+                        <select multiple class="mSelect form-control col-6 dis disabled" id="models" tabindex="8" data-toggle="popover" readonly>
                             <!--
                         <option>1</option>
                         <option>2</option>
@@ -102,8 +104,8 @@
                         -->
                         </select>
                         <div class="btn-group-vertical col-3">
-                            <button id="addModel" type="button" class="btn btn-success dis disabled">Add model</button>
-                            <button id="remModel" type="button" class="btn btn-danger dis disabled">Remove model</button>
+                            <button id="addModel" type="button" class="btn btn-success dis disabled" readonly>Add model</button>
+                            <button id="remModel" type="button" class="btn btn-danger dis disabled" readonly>Remove model</button>
                         </div>
                     </div>
                     <!-- /MODELS -->
@@ -111,12 +113,12 @@
                     <!-- COLORS / INSTALL TIME -->
                     <div class="form-group row">
                         <label for="color" class="col-3">Color</label>
-                        <input type="text" class="form-control col-3 dis disabled" id="color" placeholder="" tabindex="9" data-toggle="popover">
-                        <button type="button" id="mngColor" class="btn btn-outline-info col-1 dis disabled">Manage</button>
+                        <input type="text" class="form-control col-3 dis disabled" id="color" placeholder="" tabindex="9" data-toggle="popover" readonly>
+                        <button type="button" id="mngColor" class="btn btn-outline-info col-1 dis disabled" readonly>Manage</button>
                         <label for="partDesc" class="col-2">Install Time</label>
                         <div class="input-group col-3 inpgrp1">
-                            <input type="text" class="form-control dis disabled" id="instTime" placeholder="" tabindex="10" data-toggle="popover">
-                            <select class="form-control dis disabled" id="instTimeUnits" tabindex="11">
+                            <input type="text" class="form-control dis disabled" id="instTime" placeholder="" tabindex="10" data-toggle="popover" readonly>
+                            <select class="form-control dis disabled" id="instTimeUnits" tabindex="11" readonly>
                                 <option>Minutes</option>
                                 <option>Hours</option>
                             </select>
@@ -127,17 +129,18 @@
                     <!-- CATEGORY / PRICES -->
                     <div class="form-group row">
                         <label for="cat" class="col-3">Category</label>
-                        <input type="text" class="form-control col-3 dis disabled" id="cat" placeholder="" tabindex="12" data-toggle="popover">
-                        <button type="button" class="btn btn-outline-info col-1 dis disabled">Manage</button>
+                        <input type="text" class="form-control col-3 dis disabled" id="cat" placeholder="" tabindex="12" data-toggle="popover" readonly>
+                        <button type="button" class="btn btn-outline-info col-1 dis disabled" readonly>Manage</button>
                         <label for="price" class="col-3">Price</label>
-                        <input type="text" class="form-control col-2 dis disabled" id="price" placeholder="" tabindex="13" data-toggle="popover">
+                        <input type="text" class="form-control col-2 dis disabled" id="price" placeholder="" tabindex="13" data-toggle="popover"
+                            readonly>
                     </div>
                     <!-- /CATEGORY / PRICES -->
 
                     <!-- GUARENTEE -->
                     <div class="form-group row">
                         <label for="grnt" class="col-3">Guarantee</label>
-                        <select class="form-control col-3 dis disabled" id="grnt" tabindex="14" data-toggle="popover">
+                        <select class="form-control col-3 dis disabled" id="grnt" tabindex="14" data-toggle="popover" readonly>
                             <option>0</option>
                             <option>1</option>
                             <option>2</option>
@@ -146,9 +149,9 @@
                             <option>5</option>
                             <option>6</option>
                         </select>
-                        <button type="button" class="btn btn-outline-info col-1 dis disabled">Manage</button>
+                        <button type="button" class="btn btn-outline-info col-1 dis disabled" readonly>Manage</button>
                         <label for="grntPeriod " class="col-3">Period</label>
-                        <select class="form-control col-2 dis disabled" id="grntPeriod" tabindex="15" data-toggle="popover">
+                        <select class="form-control col-2 dis disabled" id="grntPeriod" tabindex="15" data-toggle="popover" readonly>
                             <option>month</option>
                             <option>months</option>
                             <option>year</option>

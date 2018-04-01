@@ -5,18 +5,19 @@
  *
  * long description for the file
  *
- * @summary Populate workspace form with data
+ * @summary Converts the form back to object for transfer
  * @author Cliff Crerar
  *
- * Created at     : 2018-03-27 20:22:37 
- * Last modified  : 2018-04-01 16:06:02
+ * Created at     : 2018-04-01 16:05:18 
+ * Last modified  : 2018-04-01 16:10:17
  */
 
-module.exports = part => {
-  console.log(part);
-  console.log(JSON.parse(part));
-  var p = JSON.parse(part);
+module.exports = () => {
+  var part = {
+    [$('#partNumber').val().toString()]: {}
+  };
   $('#imgLink').val(p.imgLink);
+  $('#imgLinkLocal').val();
   $('#showImg').attr('src', p.imgLink);
   $('#partName').val(p.partName);
   $('#partDesc').val(p.partDesc);
@@ -32,17 +33,3 @@ module.exports = part => {
   $('#grntPeriod').val(p.grnt.split(' ')[1]);
   $('#edit_save').removeClass('disabled');
 };
-
-/*
-cat: "OTH"
-colors: "Black cap"
-grnt: "0"
-imgLink: "http://tinyurl.com/ybzkfut4"
-instTime: 30
-make: "BMW"
-models: Array [ "F650GS", "F700GS", "F800GS", … ]
-partDesc: "Supplies auxiliary power for add ons"
-partName: "Hella Female Power Outlet Socket"
-partNum: "A01010"
-price: 55
-*/

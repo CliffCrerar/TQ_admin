@@ -42,4 +42,8 @@
     "editor.renderLineHighlight": "line",
     "editor.smoothScrolling": true,
     "workbench.editor.showIcons": true,
+    "editor.autoClosingBrackets": true,
+    "editor.colorDecorators": true,
+    "editor.cursorBlinking": "phase",
+    "editor.lightbulb.enabled": true,
 }
