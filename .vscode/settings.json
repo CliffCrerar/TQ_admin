@@ -46,4 +46,5 @@
     "editor.colorDecorators": true,
     "editor.cursorBlinking": "phase",
     "editor.lightbulb.enabled": true,
+    "liveServer.settings.wait": 1000,
 }
