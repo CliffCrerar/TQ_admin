@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-23 17:49:20 
- * Last modified  : 2018-04-02 09:28:41
+ * Last modified  : 2018-04-02 12:48:00
  */
 const url = require('./reqUrl');
 module.exports = data => {
@@ -30,8 +30,9 @@ module.exports = data => {
           $('#login').remove();
           $('.modal').remove();
           $('.tooltip').remove();
-          $('body').prepend(require('../html/workspace.html'));
+          $('#workSpace').css('height', screen.height);
           $('#workSpace').fadeIn();
+          $('.arrow').fadeIn();
         });
       } else {
         //console.log('Not auth');
@@ -42,6 +43,13 @@ module.exports = data => {
       console.log(err);
       console.log(xhr);
       console.log(some);
+      if (err) {
+        $('.modal-title').html('NO CONNECTION!');
+        $('.modal-body>p').html(
+          'Your connection to the server seems to be down, check that you have an internet connection. If you have a connection it is possible that the web server is down. Please contact your administrator for clarity.'
+        );
+        $('.modal').modal('show');
+      }
     }
   });
   return data;

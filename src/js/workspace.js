@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:27:09 
- * Last modified  : 2018-04-02 10:59:27
+ * Last modified  : 2018-04-02 12:36:51
  */
 import 'bootstrap';
 import 'popper.js';
@@ -65,21 +65,18 @@ $('body').keyup(function(ev) {
 /* CONFIGURE TOOLTIPS */
 
 // Edit button
+$('#edit').popover({ trigger: 'hover' });
 var dcEdit = 'Edit mode will become available after a part has been displayed.';
 $('#edit').attr('data-content', dcEdit);
 
 // Edit mode Cancel button
+$('#edtCancel').popover({ html: true });
 var edtCancel =
   'Are you sure you want to cancel? All updates will be lost.<br>' +
   ' <button id="edtCancelYes" class="btn btn-warning">YES</button>' +
   ' <button id="edtCancelNo" class="btn btn-primary float-right">NO</button>';
 $('#edtCancel').attr('data-content', edtCancel);
 
-// TOGLE OPTIONS
-const options = {
-  html: true
-};
-$('[data-toggle="popover"]').popover(options); // activate popovers
 /* BUTTON ACTIONS */
 
 // Show Part button
@@ -114,6 +111,7 @@ $('#edit').on('click', () => {
       // Clicking cancel in edit mode
       $('#edtCancel').on('click', () => {
         //console.log('edt cancel click');
+        $('#edtCancel').popover('show');
         $('.popover').css('z-index', '4500'); // change popover z-index to show over next/previous arrow
         // if cancel is clicked no changes are made
         $('#edtCancel').addClass('disabled'); // disable cancel button, inputs only from popover
@@ -176,18 +174,18 @@ $('.imgBtnLinks').on('click', ev => {
 
 /* PREVIOUS NEXT ARROW BUTTONS */
 $('.prevNextArrow').on('click', ev => {
+  console.log('arrow click');
   var thisPart = $('#partNumber').val();
   var numbers = window.partNumbers;
   let currentNum;
   let currentIndex;
-  //console.log(thisPart);
-  //console.log(window.partNumbers);
-  //console.log(ev.currentTarget.parentNode.attributes[0].textContent);
-  var arrow = ev.currentTarget.parentNode.attributes[0].textContent.replace(
-    'Arrow',
-    ''
-  );
-  //console.log(arrow);
+  console.log(thisPart);
+  console.log(window.partNumbers);
+  console.log(ev.currentTarget.parentNode.attributes[0].textContent);
+  var arrow = ev.currentTarget.parentNode.attributes[0].textContent
+    .replace('Arrow', '')
+    .replace(' arrow', '');
+  console.log(arrow);
   if (arrow == 'left' && thisPart == '') {
     var lastNum = numbers.length - 1;
     //console.log(lastNum);
@@ -307,14 +305,6 @@ $('#remModel').on('click', () => {
   }
 });
 
-/* DOCUMENT LOAD ACTIONS */
-$(document).ready(() => {
-  $('#edit').popover('show');
-  setTimeout(() => {
-    $('#edit').popover('dispose');
-  }, msgTimeout);
-});
-
 /* CONFIGURE KEY STROKES */
 
 $('body').on('keypress', ev => {
@@ -322,7 +312,11 @@ $('body').on('keypress', ev => {
   var key = ev.originalEvent.key;
   switch (key) {
     case 'Enter':
-      $('#showPart').click();
+      if ($('body').find('button#loginButton').length > 0) {
+        $('#loginButton').click();
+      } else {
+        $('#showPart').click();
+      }
       break;
     case 'Escape':
       $('.close').click();

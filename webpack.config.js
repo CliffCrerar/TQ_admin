@@ -3,12 +3,13 @@ const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 //const HtmlWebpackPlugin = require('Ht')
 
 module.exports = {
   entry: './src/index.js',
   target: 'node',
-  devtool: 'inline-source-map',
+  //devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -76,6 +77,9 @@ module.exports = {
       title: 'TQ Admin Console'
     }),
     new CleanWebpackPlugin(['dist']),
-    new ManifestPlugin(['Manifest'])
+    new ManifestPlugin(['Manifest']),
+    new UglifyJsPlugin({
+      sourceMap: true
+    })
   ]
 };
