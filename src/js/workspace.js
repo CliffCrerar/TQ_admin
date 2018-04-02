@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:27:09 
- * Last modified  : 2018-04-02 12:36:51
+ * Last modified  : 2018-04-02 17:17:13
  */
 import 'bootstrap';
 import 'popper.js';
@@ -23,6 +23,7 @@ import showAlert from './alerts'; // get show alert function
 import loading from './loading'; // get loading controls
 import localize from './localizeImg'; // get procedure to localize images
 import addModel from '../html/smallModal.html'; // get html for small modal
+import url from './reqUrl';
 
 let consoleMode = 'view';
 let msgTimeout = 2000;
@@ -166,7 +167,7 @@ $('.imgBtnLinks').on('click', ev => {
   $('#' + ev.target.id).removeClass('btn-secondary').addClass('btn-primary');
   //console.log(ev.target.id);
   if (ev.target.id == 'imgLinkLocalBtn') {
-    $('#showImg').attr('src', $('#imgLinkLocal').val());
+    $('#showImg').attr('src', url.fileServer() + $('#imgLinkLocal').val());
   } else if (ev.target.id == 'imgLinkBtn') {
     $('#showImg').attr('src', $('#imgLink').val());
   }

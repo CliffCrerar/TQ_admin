@@ -1,8 +1,36 @@
 {
-  "name": "tq_admin",
-  "version": "1.0.0.1",
+  "name": "tq_admin_console",
+  "version": "1.0.1",
   "description": "Admin console to manage products",
-  "private": true,
+  "main": "/src/index.js",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "font-awesome": "^4.7.0",
+    "jquery-ui": "^1.12.1",
+    "jquery": "^3.3.1",
+    "node": "^9.8.0",
+    "popper.js": "^1.14.1",
+    "update": "^0.7.4",
+    "npm": "^5.8.0"
+  },
+  "devDependencies": {
+    "url-loader": "^1.0.1",
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.12",
+    "webpack-jquery-ui": "^1.0.0",
+    "webpack-manifest-plugin": "^2.0.0-rc.2",
+    "script-loader": "^0.7.2",
+    "style-loader": "^0.20.3",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.1.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "file-loader": "^1.1.11",
+    "jshint": "^2.9.5"
+  },
   "scripts": {
     "test": "test",
     "start": "webpack --watch --mode development",
@@ -13,38 +41,13 @@
     "type": "git",
     "url": "git+https://github.com/CliffCrerar/TQ_admin.git"
   },
+  "keywords": ["Keywords"],
   "author": "Cliff Crerar",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CliffCrerar/TQ_admin/issues"
   },
   "homepage": "https://github.com/CliffCrerar/TQ_admin#readme",
-  "devDependencies": {
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "^0.28.11",
-    "eslint": "^4.19.1",
-    "eslint-plugin-flowtype": "^2.46.1",
-    "file-loader": "^1.1.11",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.1.0",
-    "jshint": "^2.9.5",
-    "script-loader": "^0.7.2",
-    "style-loader": "^0.20.3",
-    "uglifyjs-webpack-plugin": "^1.2.4",
-    "url-loader": "^1.0.1",
-    "webpack": "^4.3.0",
-    "webpack-cli": "^2.0.12",
-    "webpack-manifest-plugin": "^2.0.0-rc.2",
-    "npm": "^5.8.0"
-  },
-  "dependencies": {
-    "bootstrap": "^4.0.0",
-    "font-awesome": "^4.7.0",
-    "node": "^9.8.0",
-    "popper.js": "^1.14.1",
-    "update": "^0.7.4",
-    "webpack-jquery-ui": "^1.0.0"
-  },
   "jshintConfig": {
     "esversion": 6
   }
