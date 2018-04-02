@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:26:29 
- * Last modified  : 2018-04-01 22:33:33
+ * Last modified  : 2018-04-02 10:52:49
  */
 
 .loadingDiv {
@@ -64,6 +64,8 @@
 .alertOverlay {
   position: fixed;
   display: none;
+  top: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -100;
   min-width: 100%;
@@ -85,7 +87,14 @@
 }
 
 .modeDesc {
+  width: 50%;
   margin: 0%;
+  padding-left: 5%;
+}
+.partCount {
+  width: 50%;
+  margin: 0%;
+  padding-right: 5%;
 }
 
 .vMode {
@@ -107,6 +116,10 @@
 .form-control {
   min-height: 24px !important;
   margin: 5px 0 5px 0 !important;
+}
+
+.imgBtnLinks {
+  width: 40px !important;
 }
 
 .editModeBtns {
@@ -151,6 +164,11 @@
   background-color: rgb(230, 227, 227);
   pointer-events: none;
   cursor: not-allowed;
+}
+
+.disabledArrow {
+  cursor: not-allowed;
+  color: rgba(128, 128, 128, 0.37);
 }
 
 .leftArrow {

@@ -2,8 +2,9 @@ module.exports = {
   // VIEW MODE
   viewMode() {
     console.log('SWITCH TO VIEW MODE');
-    console.log($('#editModeBtns').css('display'));
-    console.log($('#addModeBtns').css('display'));
+    //console.log($('#editModeBtns').css('display'));
+    //console.log($('#addModeBtns').css('display'));
+    $('.arrow').removeClass('disabledArrow');
     var prevMode = '';
     if ($('#editModeBtns').css('display') == 'block') {
       prevMode = 'edit';
@@ -24,6 +25,7 @@ module.exports = {
   },
   // ADD MODE
   addMode() {
+    $('.arrow').addClass('disabledArrow');
     console.log('SWITCH TO VIEW MODE');
     $('#modeDesc')
       .removeClass('eMode vMode')
@@ -33,10 +35,13 @@ module.exports = {
   // EDIT MODE
   editMode() {
     console.log('SWITCH TO EDIT MODE');
-
     //console.log(btns);
     //console.log(editBtns);
+    $('.arrow').addClass('disabledArrow');
     $('.dis').removeClass('disabled').removeAttr('readonly');
+    if ($('#imgLinkLocal').val() != '') {
+      $('#localizeImg').addClass('disabled');
+    }
     $('#viewModeBtns').hide();
     $('#editModeBtns').show();
     $('#partNumber').addClass('disabled').attr('readonly');

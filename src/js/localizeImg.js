@@ -9,33 +9,13 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 23:13:35 
- * Last modified  : 2018-04-02 01:38:54
+ * Last modified  : 2018-04-02 09:28:33
  */
 const url = require('./reqUrl');
-module.exports = pNumber => {
-  $.ajax({
-    url: url + 'locolizeImg',
-    method: 'POST',
-    origin: '*',
-    contentType: 'text/plain',
-    dataType: 'text',
-    data: pNumber,
-    success: (data, status) => {
-      console.log(data);
-      console.log(status);
-      if (status == 'success') {
-        checkImg(pNumber);
-      }
-    },
-    error: (err, xhr, some) => {
-      console.log(err);
-      console.log(xhr);
-      console.log(some);
-    }
-  });
-  const checkImg = pNumber => {
+module.exports = {
+  download(pNumber) {
     $.ajax({
-      url: url + 'checkImg',
+      url: url.webserver() + 'locolizeImg',
       method: 'POST',
       origin: '*',
       contentType: 'text/plain',
@@ -51,5 +31,28 @@ module.exports = pNumber => {
         console.log(some);
       }
     });
-  };
+  },
+
+  check(pNumber) {
+    $.ajax({
+      url: url.webserver() + 'checkLocalization',
+      method: 'POST',
+      origin: '*',
+      contentType: 'text/plain',
+      dataType: 'text',
+      data: pNumber,
+      success: (data, status) => {
+        //console.log(data);
+        //console.log(status);
+        $('#imgLinkLocal').val('/data/partImg/' + data);
+        $('.imgBtnLinks').removeClass('disabled');
+        $('#localizeImg').addClass('disabled');
+      },
+      error: (err, xhr, some) => {
+        console.log(err);
+        console.log(xhr);
+        console.log(some);
+      }
+    });
+  }
 };

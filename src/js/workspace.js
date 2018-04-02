@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:27:09 
- * Last modified  : 2018-04-01 23:28:14
+ * Last modified  : 2018-04-02 10:59:27
  */
 import 'bootstrap';
 import 'popper.js';
@@ -21,7 +21,8 @@ import savePart from './savePart'; // function that writes to the web server
 import formToObj from './formToPartObj'; // get function that turns form to object
 import showAlert from './alerts'; // get show alert function
 import loading from './loading'; // get loading controls
-import localizeImg from './localizeImg'; // get procedure to localize images
+import localize from './localizeImg'; // get procedure to localize images
+import addModel from '../html/smallModal.html'; // get html for small modal
 
 let consoleMode = 'view';
 let msgTimeout = 2000;
@@ -36,8 +37,26 @@ $(document).ready(() => {
   getMakes();
 });
 /*
+$('body').on('click', ev => {
+  console.log(ev.target);
+});
+
+$('#tb').click(() => {
+  //$('#partNumber').val('');
+  $('.dis').val('');
+  $('#models').empty();
+});
 $('#models').on('click', ev => {
   console.log(ev);
+});
+*/
+/*
+$('body').keydown(function(ev) {
+  console.log(ev.originalEvent.key);
+});
+
+$('body').keyup(function(ev) {
+  console.log(ev.originalEvent.key);
 });
 */
 
@@ -65,9 +84,12 @@ $('[data-toggle="popover"]').popover(options); // activate popovers
 
 // Show Part button
 $('#showPart').on('click', () => {
+  clearForm(); // run the clear form procedure before populating;
+  var number = $('#partNumber').val();
+  var numbers = window.partNumbers;
   if (
-    $('#partNumber').val() != '' && // if partnumber is blank
-    window.partNumbers.includes($('#partNumber').val()) // if part number entered does not exist
+    number != '' && // if partnumber is blank
+    numbers.includes($('#partNumber').val()) // if part number entered does not exist
   ) {
     //console.log('TRUE');
     loading.startLoading();
@@ -77,6 +99,9 @@ $('#showPart').on('click', () => {
   } else {
     showAlert($('#noPartNumber')); // show alert of incorrect values
   }
+  var currNum = numbers.indexOf(number) + 1;
+  var count = numbers.length;
+  $('.partCount').html(currNum + ' / ' + count);
 });
 
 // Add new button
@@ -121,21 +146,179 @@ $('#edit').on('click', () => {
 $('#localizeImg').on('click', () => {
   console.log('Localise image click');
   var partNumber = $('#partNumber').val(); // get current part number
-  console.log(partNumber);
-  localizeImg(partNumber); // send localisation instruction to web server
+  //console.log(partNumber);
+  Promise.resolve(localize.download(partNumber)).then(val => {
+    setTimeout(() => {
+      //console.log('resolved');
+      localize.check(partNumber);
+    }, 2000);
+  }); // send localisation instruction to web server
+});
+
+/* LINK TEST BUTTONS */
+$('.imgBtnLinks').on('click', ev => {
+  console.log('btn-links-click');
+  if ($('#imgLinkLocalBtn').hasClass('btn-primary')) {
+    //console.log('#imgLinkLocalBtn has btn primary');
+    $('#imgLinkLocalBtn').removeClass('btn-primary').addClass('btn-secondary');
+  } else if ($('#imgLinkBtn').hasClass('btn-primary')) {
+    //console.log('#imgLinkBtn has btn primary');
+    $('#imgLinkBtn').removeClass('btn-primary').addClass('btn-secondary');
+  }
+  $('#' + ev.target.id).removeClass('btn-secondary').addClass('btn-primary');
+  //console.log(ev.target.id);
+  if (ev.target.id == 'imgLinkLocalBtn') {
+    $('#showImg').attr('src', $('#imgLinkLocal').val());
+  } else if (ev.target.id == 'imgLinkBtn') {
+    $('#showImg').attr('src', $('#imgLink').val());
+  }
+});
+
+/* PREVIOUS NEXT ARROW BUTTONS */
+$('.prevNextArrow').on('click', ev => {
+  var thisPart = $('#partNumber').val();
+  var numbers = window.partNumbers;
+  let currentNum;
+  let currentIndex;
+  //console.log(thisPart);
+  //console.log(window.partNumbers);
+  //console.log(ev.currentTarget.parentNode.attributes[0].textContent);
+  var arrow = ev.currentTarget.parentNode.attributes[0].textContent.replace(
+    'Arrow',
+    ''
+  );
+  //console.log(arrow);
+  if (arrow == 'left' && thisPart == '') {
+    var lastNum = numbers.length - 1;
+    //console.log(lastNum);
+    $('#partNumber').val(numbers[lastNum]);
+    $('#showPart').click();
+  } else if (arrow == 'right' && thisPart == '') {
+    $('#partNumber').val(numbers[0]);
+    $('#showPart').click();
+  } else if (arrow == 'left' && thisPart != '') {
+    currentNum = $('#partNumber').val();
+    currentIndex = numbers.indexOf(currentNum);
+    //console.log(currentIndex);
+    if (currentIndex == 0) {
+      $('#partNumber').val(numbers[numbers.length - 1]);
+    } else {
+      $('#partNumber').val(numbers[currentIndex - 1]);
+    }
+    $('#showPart').click();
+  } else if (arrow == 'right' && thisPart != '') {
+    currentNum = $('#partNumber').val();
+    currentIndex = numbers.indexOf(currentNum);
+    //console.log(currentIndex);
+    if (currentIndex == numbers.length - 1) {
+      $('#partNumber').val(numbers[0]);
+    } else {
+      $('#partNumber').val(numbers[currentIndex + 1]);
+    }
+    $('#showPart').click();
+  }
+});
+
+$('.prevNextArrow').hover(() => {
+  if ($('.arrow').hasClass('disabledArrow')) {
+    console.log('arrow is disabled');
+    $('.prevNextArrow').popover({ trigger: 'hover' });
+    $('.prevNextArrow').attr(
+      'data-content',
+      'Arrows are only allowed when in view mode.'
+    );
+    $('.leftArrow').popover('show');
+    $('.rightArrow').popover('show');
+  }
+});
+
+/* ADD SELECT ATTRIBUTE TO MULTI OPTIONS */
+$('#models').on('click', ev => {
+  if (!cntrKeyPressed) {
+    $('#models').children().each((i, el) => {
+      $(el).removeClass('picked');
+    });
+  }
+  //console.log(ev.target);
+  $(ev.target).addClass('picked');
+
+  //items = $('#models');
+});
+
+/* ADD REMOVE MODELS */
+$('#addModel').on('click', () => {
+  var newVal = $('#models').children().length;
+  $('body').append(addModel);
+  Promise.resolve($('#addModels').modal('show')).then(() => {
+    $('#btnAddCancel').click(() => {
+      //console.log('btn cancel click');
+      $('#addModels').modal('hide');
+      setTimeout(() => {
+        $('#addModels').remove();
+      }, 200);
+    });
+    $('#btnAddModel').click(() => {
+      //console.log($('#modelInput').val());
+      if ($('#modelInput').val() == '') {
+        showAlert($('#noModelEntered'));
+      } else {
+        $('#models').append(
+          '<option val="' + newVal + '">' + $('#modelInput').val() + '</option>'
+        );
+      }
+      $('#addModels').modal('hide');
+      setTimeout(() => {
+        $('#addModels').remove();
+      }, 200);
+    });
+  });
+});
+$('#remModel').on('click', () => {
+  console.log($('#models').hasClass('picked'));
+  console.log($('#models'));
+  var deleteModels = [];
+  var pickedForDel = $('.picked').length;
+  console.log(pickedForDel);
+  $('#remModel').popover({ html: true, placement: 'left' });
+  if (pickedForDel < 1) {
+    showAlert($('#noModelPicked'));
+  } else {
+    $('.picked').each((i, el) => {
+      console.log(el.innerHTML);
+      deleteModels.push(el.innerHTML);
+    });
+    var remModelPoMsg =
+      'Are you sure you want to delete these models: ' +
+      deleteModels +
+      '<br>' +
+      '<button id="remPopoverConfirm" class="btn btn-danger">YES</button>' +
+      '<button id="remPopoverCancel" class="btn btn-info float-right">DONT</button>';
+    $('#remModel').attr('data-original-title', 'ARE YOU SURE?');
+    $('#remModel').attr('data-content', remModelPoMsg);
+    Promise.resolve($('#remModel').popover('show')).then(() => {
+      $('#remPopoverCancel').on('click', () => {
+        $('#remModel').popover('dispose');
+      });
+      $('#remPopoverConfirm').on('click', () => {
+        $('.picked').remove();
+        $('#remModel').popover('dispose');
+      });
+    });
+  }
 });
 
 /* DOCUMENT LOAD ACTIONS */
 $(document).ready(() => {
   $('#edit').popover('show');
   setTimeout(() => {
-    $('#edit').popover('hide');
+    $('#edit').popover('dispose');
   }, msgTimeout);
 });
 
 /* CONFIGURE KEY STROKES */
-$('body').on('keydown', ev => {
-  console.log(ev.originalEvent.key);
+
+$('body').on('keypress', ev => {
+  //console.log(ev.originalEvent.key);
   var key = ev.originalEvent.key;
   switch (key) {
     case 'Enter':
@@ -146,3 +329,31 @@ $('body').on('keydown', ev => {
       break;
   }
 });
+
+// Detect if control is pressed;
+let cntrKeyPressed = false;
+$('body').keydown(function(ev) {
+  //console.log(ev.originalEvent.key);
+  var keyDown = ev.originalEvent.key;
+  if (keyDown == 'Control' || keyDown == 'Meta') {
+    cntrKeyPressed = true;
+    //console.log(cntrKeyPressed);
+  }
+});
+
+$('body').keyup(function(ev) {
+  //console.log(ev.originalEvent.key);
+  var keyUp = ev.originalEvent.key;
+  if (keyUp == 'Control' || keyUp == 'Meta') {
+    cntrKeyPressed = false;
+    //console.log(cntrKeyPressed);
+  }
+});
+
+/* CLEAR ALL VALUES FROM FORM */
+
+var clearForm = () => {
+  //$('#partNumber').val('');
+  $('.dis').val('');
+  $('#models').empty();
+};

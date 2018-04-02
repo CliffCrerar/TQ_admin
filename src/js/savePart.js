@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 15:52:23 
- * Last modified  : 2018-04-01 23:14:17
+ * Last modified  : 2018-04-02 03:13:41
  */
 const url = require('./reqUrl');
 const alerts = require('./alerts');
@@ -18,7 +18,7 @@ const modeSwitch = require('./modes');
 module.exports = (partToSave, saveType) => {
   //console.log(url);
   $.ajax({
-    url: url + saveType,
+    url: url.webserver() + saveType,
     method: 'POST',
     origin: '*',
     contentType: 'text/plain',
