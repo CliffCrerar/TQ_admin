@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 15:52:23 
- * Last modified  : 2018-04-02 03:13:41
+ * Last modified  : 2018-04-02 21:40:48
  */
 const url = require('./reqUrl');
 const alerts = require('./alerts');
@@ -25,8 +25,8 @@ module.exports = (partToSave, saveType) => {
     dataType: 'text',
     data: JSON.stringify(partToSave),
     success: (data, status) => {
-      console.log(data);
-      console.log(status);
+      //console.log(data);
+      //console.log(status);
       loading.endLoading();
       var Partnumber = Object.keys(partToSave).toString();
       $('#partSaved>.alertMsg').html(

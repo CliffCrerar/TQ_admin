@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:27:09 
- * Last modified  : 2018-04-02 17:17:13
+ * Last modified  : 2018-04-02 21:58:06
  */
 import 'bootstrap';
 import 'popper.js';
@@ -69,6 +69,21 @@ $('body').keyup(function(ev) {
 $('#edit').popover({ trigger: 'hover' });
 var dcEdit = 'Edit mode will become available after a part has been displayed.';
 $('#edit').attr('data-content', dcEdit);
+
+// SET INTERVAL TO SHOW EDIT BUTTON POPOVER
+var checkWorkSpace = setInterval(() => {
+  if ($('#workSpace').is(':visible')) {
+    clearInterval(checkWorkSpace);
+    $('#edit').popover('show');
+    setTimeout(() => {
+      $('#edit').popover('hide');
+    }, 5000);
+  }
+}, 1000);
+
+$('#workSpace').on('show', () => {
+  console.log('workspace has been shown');
+});
 
 // Edit mode Cancel button
 $('#edtCancel').popover({ html: true });

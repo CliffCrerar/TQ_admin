@@ -9,12 +9,12 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-27 20:22:37 
- * Last modified  : 2018-04-02 07:45:53
+ * Last modified  : 2018-04-02 21:40:31
  */
 const url = require('./reqUrl');
 module.exports = part => {
-  console.log(part);
-  console.log(JSON.parse(part));
+  //console.log(part);
+  //console.log(JSON.parse(part));
   var p = JSON.parse(part);
   $('#imgLink').val(p.imgLink);
   $('.imgBtnLinks').removeClass('btn-primary').addClass('btn-secondary');
