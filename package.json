@@ -1,6 +1,6 @@
 {
   "name": "tq_admin",
-  "version": "1.0.0",
+  "version": "1.0.0.1",
   "description": "Admin console to manage products",
   "private": true,
   "scripts": {
