@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 16:05:18 
- * Last modified  : 2018-04-03 21:12:02
+ * Last modified  : 2018-04-04 00:10:15
  */
 
 module.exports = () => {
@@ -19,6 +19,14 @@ module.exports = () => {
     //console.log(i, $(el).val());
     models.push($(el).html());
   });
+
+  // Modify guarentee
+  let grnt;
+  if ($('#grnt').val() == 'None') {
+    grnt = 'None';
+  } else {
+    grnt = $('#grnt').val() + ' ' + $('#grntPeriod').val();
+  }
   // take form values and populate JS object
   var part = {
     [$('#partNumber').val().toString()]: {
@@ -30,7 +38,7 @@ module.exports = () => {
       imgLink: $('#imgLink').val(),
       imgLinkLocal: $('#imgLinkLocal').val(),
       colors: $('#color').val(),
-      grnt: $('#grnt').val() + ' ' + $('#grntPeriod').val(),
+      grnt: grnt,
       instTime: $('#instTime').val(),
       price: $('#price').val(),
       cat: $('#cat').val()
