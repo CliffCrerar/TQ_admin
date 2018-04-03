@@ -5,7 +5,7 @@ module.exports = {
     //console.log($('#editModeBtns').css('display'));
     //console.log($('#addModeBtns').css('display'));
     $('.arrow').removeClass('disabledArrow');
-    $('.prevNextArrow').css('color', 'white');
+    $('.prevNextArrow').css('color', 'rgb(39, 168, 39)');
     $('.prevNextArrow').popover('dispose');
     var prevMode = '';
     if ($('#editModeBtns').css('display') == 'block') {

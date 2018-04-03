@@ -9,10 +9,10 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 15:52:23 
- * Last modified  : 2018-04-03 19:44:57
+ * Last modified  : 2018-04-03 23:12:02
  */
 //const url = require('./reqUrl');
-const alerts = require('./alerts');
+const showAlert = require('./alerts');
 const loading = require('./loading');
 const modeSwitch = require('./modes');
 module.exports = (partToSave, saveType) => {
@@ -25,8 +25,8 @@ module.exports = (partToSave, saveType) => {
     dataType: 'text',
     data: JSON.stringify(partToSave),
     success: (data, status) => {
-      //console.log(data);
-      //console.log(status);
+      console.log(data);
+      console.log(status);
       loading.endLoading();
       var Partnumber = Object.keys(partToSave).toString();
       $('#partSaved>.alertMsg').html(
@@ -40,10 +40,10 @@ module.exports = (partToSave, saveType) => {
           '</b> no changes were made. <button type="button" class="close hideAlert"><span aria-hidden="true">&times;</span>'
       );
       if (data == 'update') {
-        alerts($('#partSaved'));
+        showAlert($('#partSaved'));
         modeSwitch.viewMode();
       } else {
-        alerts($('#noChanges'));
+        showAlert($('#noChanges'));
       }
     },
     error: (err, xhr, some) => {
