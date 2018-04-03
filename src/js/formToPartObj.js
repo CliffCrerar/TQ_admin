@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 16:05:18 
- * Last modified  : 2018-04-01 18:01:33
+ * Last modified  : 2018-04-03 21:12:02
  */
 
 module.exports = () => {
@@ -17,7 +17,7 @@ module.exports = () => {
   // populate models array from the model options
   $('#models').children().each((i, el) => {
     //console.log(i, $(el).val());
-    models.push($(el).val());
+    models.push($(el).html());
   });
   // take form values and populate JS object
   var part = {

@@ -9,13 +9,13 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-23 17:49:20 
- * Last modified  : 2018-04-02 12:48:00
+ * Last modified  : 2018-04-03 19:29:45
  */
-const url = require('./reqUrl');
+//const url = require('./reqUrl');
 module.exports = data => {
   //console.log(url);
   $.ajax({
-    url: url.webserver() + 'userauth',
+    url: ADDRESS + 'userauth',
     method: 'POST',
     origin: '*',
     contentType: 'text/plain',

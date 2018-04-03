@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:27:09 
- * Last modified  : 2018-04-02 21:58:06
+ * Last modified  : 2018-04-03 21:29:53
  */
 import 'bootstrap';
 import 'popper.js';
@@ -23,7 +23,6 @@ import showAlert from './alerts'; // get show alert function
 import loading from './loading'; // get loading controls
 import localize from './localizeImg'; // get procedure to localize images
 import addModel from '../html/smallModal.html'; // get html for small modal
-import url from './reqUrl';
 
 let consoleMode = 'view';
 let msgTimeout = 2000;
@@ -160,11 +159,15 @@ $('#edit').on('click', () => {
 $('#localizeImg').on('click', () => {
   console.log('Localise image click');
   var partNumber = $('#partNumber').val(); // get current part number
+  $('#locImgSpin').addClass('fa-spin');
   //console.log(partNumber);
   Promise.resolve(localize.download(partNumber)).then(val => {
     setTimeout(() => {
       //console.log('resolved');
       localize.check(partNumber);
+      setTimeout(() => {
+        $('#locImgSpin').removeClass('fa-spin');
+      }, 1000);
     }, 2000);
   }); // send localisation instruction to web server
 });
@@ -182,7 +185,7 @@ $('.imgBtnLinks').on('click', ev => {
   $('#' + ev.target.id).removeClass('btn-secondary').addClass('btn-primary');
   //console.log(ev.target.id);
   if (ev.target.id == 'imgLinkLocalBtn') {
-    $('#showImg').attr('src', url.fileServer() + $('#imgLinkLocal').val());
+    $('#showImg').attr('src', ADDRESSFS + $('#imgLinkLocal').val());
   } else if (ev.target.id == 'imgLinkBtn') {
     $('#showImg').attr('src', $('#imgLink').val());
   }
@@ -236,7 +239,6 @@ $('.prevNextArrow').on('click', ev => {
 $('.prevNextArrow').hover(() => {
   if ($('.arrow').hasClass('disabledArrow')) {
     console.log('arrow is disabled');
-    $('.prevNextArrow').popover({ trigger: 'hover' });
     $('.prevNextArrow').attr(
       'data-content',
       'Arrows are only allowed when in view mode.'

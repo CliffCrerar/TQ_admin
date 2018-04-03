@@ -6,12 +6,12 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
-    "jquery-ui": "^1.12.1",
     "jquery": "^3.3.1",
+    "jquery-ui": "^1.12.1",
     "node": "^9.8.0",
+    "npm": "^5.8.0",
     "popper.js": "^1.14.1",
-    "update": "^0.7.4",
-    "npm": "^5.8.0"
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "url-loader": "^1.0.1",
@@ -33,15 +33,19 @@
   },
   "scripts": {
     "test": "test",
-    "start": "webpack --watch --mode development",
-    "build": "webpack --config webpack.config.js --display-modules --mode development",
-    "prod": "webpack --config webpack.config.js --optimize-minimize --display-modules --mode production"
+    "start": "webpack --watch --config webpack.config.dev.js --mode development",
+    "watchLive": "webpack --watch --config webpack.config.dev1.js --mode development",
+    "buildLive": "webpack --config webpack.config.dev1.js --display-modules --mode development",
+    "build": "webpack --config webpack.config.dev.js --display-modules --mode development",
+    "prod": "webpack --config webpack.config.prod.js --optimize-minimize --display-modules --mode production"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CliffCrerar/TQ_admin.git"
   },
-  "keywords": ["Keywords"],
+  "keywords": [
+    "Keywords"
+  ],
   "author": "Cliff Crerar",
   "license": "ISC",
   "bugs": {

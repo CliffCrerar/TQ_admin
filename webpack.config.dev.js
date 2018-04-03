@@ -3,13 +3,14 @@ const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+//const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 //const HtmlWebpackPlugin = require('Ht')
 
 module.exports = {
-  entry: './src/index.js',
+  mode: 'development',
+  entry: ['./src/index.js', './src/devCode.js'],
   target: 'node',
-  //devtool: 'inline-source-map',
+  devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -66,6 +67,10 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      ADDRESS: JSON.stringify('http://172.16.0.104:8010/'),
+      ADDRESSFS: JSON.stringify('http://172.16.0.104:8015')
+    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -74,12 +79,10 @@ module.exports = {
       Popper: ['popper.js', 'default']
     }),
     new HTMLWebpackPlugin({
-      title: 'TQ Admin Console'
+      title: 'TQ Admin Console',
+      favicon: './src/img/favicon.svg'
     }),
     new CleanWebpackPlugin(['dist']),
-    new ManifestPlugin(['Manifest']),
-    new UglifyJsPlugin({
-      sourceMap: true
-    })
+    new ManifestPlugin(['Manifest'])
   ]
 };
