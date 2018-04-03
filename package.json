@@ -1,6 +1,6 @@
 {
   "name": "tq_admin_console",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Admin console to manage products",
   "main": "/src/index.js",
   "dependencies": {
@@ -43,9 +43,7 @@
     "type": "git",
     "url": "git+https://github.com/CliffCrerar/TQ_admin.git"
   },
-  "keywords": [
-    "Keywords"
-  ],
+  "keywords": ["Keywords"],
   "author": "Cliff Crerar",
   "license": "ISC",
   "bugs": {
