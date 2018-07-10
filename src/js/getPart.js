@@ -9,16 +9,16 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-27 19:04:39 
- * Last modified  : 2018-04-02 03:12:53
+ * Last modified  : 2018-04-03 19:33:59
  */
 
-const url = require('./reqUrl');
+//const url = require('./reqUrl');
 const populateForm = require('./popForm');
 const loading = require('./loading');
 module.exports = pNumber => {
   //console.log(url);
   $.ajax({
-    url: url.webserver() + 'prt',
+    url: ADDRESS + 'getPart',
     method: 'POST',
     origin: '*',
     contentType: 'text/plain',

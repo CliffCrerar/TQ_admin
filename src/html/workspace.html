@@ -122,7 +122,7 @@
                         <div id="viewModeBtns" class="btn-group col-6 row">
                             <button id="showPart" type="button" class="btn btn-primary col-3" tabindex="0">SHOW</button>
                             <button id="addNew" type="button" class="btn btn-success col-3" tabindex="1">+NEW</button>
-                            <button id="edit" type="button" class="btn btn-warning col-5 disabled" tabindex="2" data-toggle="popover" data-placement="top">
+                            <button id="edit" type="button" class="btn btn-warning col-5 disabled" tabindex="2" data-placement="top">
                                 <b>EDIT</b>
                             </button>
                         </div>
@@ -163,8 +163,9 @@
                             </div>
 
                             <div class="col-12">
-                                <button id="localizeImg" type="button" class="btnLocalize btn btn-outline-warning btn-block float-right dis disabled" tabindex="4"
-                                    readonly>Localize Image</button>
+                                <button id="localizeImg" type="button" class="btnLocalize btn btn-outline-info btn-block float-right dis disabled" tabindex="4"
+                                    readonly>
+                                    <span id="locImgSpin" class="fa fa-cog" aria-hidden="true"></span>Localize Image</button>
                             </div>
                         </div>
                         <div class="col-4">
@@ -249,6 +250,7 @@
                     <div class="form-group row">
                         <label for="grnt" class="col-3">Guarantee</label>
                         <select class="form-control col-3 dis disabled" id="grnt" tabindex="14" data-toggle="popover" readonly>
+                            <option>None</option>
                             <option>0</option>
                             <option>1</option>
                             <option>2</option>
@@ -264,7 +266,7 @@
                             <option>months</option>
                             <option>year</option>
                             <option>years</option>
-                            <option>none</option>
+                            <option>n/a</option>
                         </select>
                     </div>
                     <!-- /GUARENTEE -->

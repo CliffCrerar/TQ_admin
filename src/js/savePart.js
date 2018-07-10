@@ -9,16 +9,16 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 15:52:23 
- * Last modified  : 2018-04-02 03:13:41
+ * Last modified  : 2018-04-03 23:12:02
  */
-const url = require('./reqUrl');
-const alerts = require('./alerts');
+//const url = require('./reqUrl');
+const showAlert = require('./alerts');
 const loading = require('./loading');
 const modeSwitch = require('./modes');
 module.exports = (partToSave, saveType) => {
   //console.log(url);
   $.ajax({
-    url: url.webserver() + saveType,
+    url: ADDRESS + saveType,
     method: 'POST',
     origin: '*',
     contentType: 'text/plain',
@@ -40,10 +40,10 @@ module.exports = (partToSave, saveType) => {
           '</b> no changes were made. <button type="button" class="close hideAlert"><span aria-hidden="true">&times;</span>'
       );
       if (data == 'update') {
-        alerts($('#partSaved'));
+        showAlert($('#partSaved'));
         modeSwitch.viewMode();
       } else {
-        alerts($('#noChanges'));
+        showAlert($('#noChanges'));
       }
     },
     error: (err, xhr, some) => {

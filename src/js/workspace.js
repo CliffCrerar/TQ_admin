@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:27:09 
- * Last modified  : 2018-04-02 12:36:51
+ * Last modified  : 2018-04-03 21:29:53
  */
 import 'bootstrap';
 import 'popper.js';
@@ -68,6 +68,21 @@ $('body').keyup(function(ev) {
 $('#edit').popover({ trigger: 'hover' });
 var dcEdit = 'Edit mode will become available after a part has been displayed.';
 $('#edit').attr('data-content', dcEdit);
+
+// SET INTERVAL TO SHOW EDIT BUTTON POPOVER
+var checkWorkSpace = setInterval(() => {
+  if ($('#workSpace').is(':visible')) {
+    clearInterval(checkWorkSpace);
+    $('#edit').popover('show');
+    setTimeout(() => {
+      $('#edit').popover('hide');
+    }, 5000);
+  }
+}, 1000);
+
+$('#workSpace').on('show', () => {
+  console.log('workspace has been shown');
+});
 
 // Edit mode Cancel button
 $('#edtCancel').popover({ html: true });
@@ -144,11 +159,15 @@ $('#edit').on('click', () => {
 $('#localizeImg').on('click', () => {
   console.log('Localise image click');
   var partNumber = $('#partNumber').val(); // get current part number
+  $('#locImgSpin').addClass('fa-spin');
   //console.log(partNumber);
   Promise.resolve(localize.download(partNumber)).then(val => {
     setTimeout(() => {
       //console.log('resolved');
       localize.check(partNumber);
+      setTimeout(() => {
+        $('#locImgSpin').removeClass('fa-spin');
+      }, 1000);
     }, 2000);
   }); // send localisation instruction to web server
 });
@@ -166,7 +185,7 @@ $('.imgBtnLinks').on('click', ev => {
   $('#' + ev.target.id).removeClass('btn-secondary').addClass('btn-primary');
   //console.log(ev.target.id);
   if (ev.target.id == 'imgLinkLocalBtn') {
-    $('#showImg').attr('src', $('#imgLinkLocal').val());
+    $('#showImg').attr('src', ADDRESSFS + $('#imgLinkLocal').val());
   } else if (ev.target.id == 'imgLinkBtn') {
     $('#showImg').attr('src', $('#imgLink').val());
   }
@@ -220,7 +239,6 @@ $('.prevNextArrow').on('click', ev => {
 $('.prevNextArrow').hover(() => {
   if ($('.arrow').hasClass('disabledArrow')) {
     console.log('arrow is disabled');
-    $('.prevNextArrow').popover({ trigger: 'hover' });
     $('.prevNextArrow').attr(
       'data-content',
       'Arrows are only allowed when in view mode.'

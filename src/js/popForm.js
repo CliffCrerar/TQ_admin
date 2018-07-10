@@ -9,17 +9,19 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-27 20:22:37 
- * Last modified  : 2018-04-02 07:45:53
+ * Last modified  : 2018-04-03 20:13:58
  */
-const url = require('./reqUrl');
+//const url = require('./reqUrl');
 module.exports = part => {
+  //console.log(part);
   console.log(part);
-  console.log(JSON.parse(part));
   var p = JSON.parse(part);
+  // WEB LINK
   $('#imgLink').val(p.imgLink);
+  // CHECK FOR LOCAL LINK AND ACT
   $('.imgBtnLinks').removeClass('btn-primary').addClass('btn-secondary');
   if (p.imgLinkLocal != undefined && p.imgLinkLocal != '') {
-    var localLink = url.fileServer() + p.imgLinkLocal;
+    var localLink = ADDRESSFS + p.imgLinkLocal;
     $('#imgLinkLocal').val(p.imgLinkLocal);
     $('#showImg').attr('src', localLink);
     $('#imgLinkLocalBtn').removeClass('btn-secondary').addClass('btn-primary');
@@ -32,20 +34,36 @@ module.exports = part => {
       .addClass('btn-primary disabled');
     $('#imgLinkLocalBtn').addClass('disabled');
   }
+  // PART NAME
   $('#partName').val(p.partName);
+  // PART DESCRIPTION
   $('#partDesc').val(p.partDesc);
+  // PART MAKE
   $('#make').val(p.make);
+  // MODELS
   for (var i = 0; i < p.models.length; i++) {
     $('#models').append(
       '<option value="' + i + '">' + p.models[i] + '</option>'
     );
   }
+  // COLORS
   $('#color').val(p.colors);
+  // INSTALLATION TIME
   $('#instTime').val(p.instTime);
+  // CATEGORY
   $('#cat').val(p.cat);
+  // PRICE
   $('#price').val(p.price);
+  // GUARENTEE
+  console.log(p.grnt);
   $('#grnt').val(p.grnt.split(' ')[0]);
-  $('#grntPeriod').val(p.grnt.split(' ')[1]);
+  // GUARENTEE PERIOD
+  if (p.grnt == 'None') {
+    $('#grntPeriod').val('n/a');
+  } else {
+    $('#grntPeriod').val(p.grnt.split(' ')[1]);
+  }
+  // ACTIVATE EDIT
   $('#edit_save').removeClass('disabled');
 };
 

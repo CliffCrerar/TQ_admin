@@ -9,7 +9,7 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:26:29 
- * Last modified  : 2018-04-02 13:00:12
+ * Last modified  : 2018-04-03 23:24:19
  */
 
 .loadingDiv {
@@ -166,17 +166,16 @@
   cursor: not-allowed;
 }
 
+.disabledArrow {
+  cursor: not-allowed;
+}
+
 .prevNextArrow {
-  color: white;
+  color: rgb(39, 168, 39);
 }
 
 .arrow {
   display: none;
-}
-
-.disabledArrow {
-  cursor: not-allowed;
-  color: rgba(128, 128, 128, 0.37);
 }
 
 .leftArrow {

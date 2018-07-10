@@ -9,13 +9,13 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-04-01 23:13:35 
- * Last modified  : 2018-04-02 09:28:33
+ * Last modified  : 2018-04-03 19:30:43
  */
-const url = require('./reqUrl');
+// const url = require('./reqUrl');
 module.exports = {
   download(pNumber) {
     $.ajax({
-      url: url.webserver() + 'locolizeImg',
+      url: ADDRESS + 'locolizeImg',
       method: 'POST',
       origin: '*',
       contentType: 'text/plain',
@@ -35,7 +35,7 @@ module.exports = {
 
   check(pNumber) {
     $.ajax({
-      url: url.webserver() + 'checkLocalization',
+      url: ADDRESS + 'checkLocalization',
       method: 'POST',
       origin: '*',
       contentType: 'text/plain',

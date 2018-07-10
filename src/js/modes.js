@@ -5,6 +5,8 @@ module.exports = {
     //console.log($('#editModeBtns').css('display'));
     //console.log($('#addModeBtns').css('display'));
     $('.arrow').removeClass('disabledArrow');
+    $('.prevNextArrow').css('color', 'rgb(39, 168, 39)');
+    $('.prevNextArrow').popover('dispose');
     var prevMode = '';
     if ($('#editModeBtns').css('display') == 'block') {
       prevMode = 'edit';
@@ -26,6 +28,8 @@ module.exports = {
   // ADD MODE
   addMode() {
     $('.arrow').addClass('disabledArrow');
+    $('.prevNextArrow').css('color', 'rgba(187, 187, 187, 0.5)');
+    $('.prevNextArrow').popover({ trigger: 'hover' });
     console.log('SWITCH TO VIEW MODE');
     $('#modeDesc')
       .removeClass('eMode vMode')
@@ -38,6 +42,8 @@ module.exports = {
     //console.log(btns);
     //console.log(editBtns);
     $('.arrow').addClass('disabledArrow');
+    $('.prevNextArrow').css('color', 'rgba(187, 187, 187, 0.5)');
+    $('.prevNextArrow').popover({ trigger: 'hover' });
     $('.dis').removeClass('disabled').removeAttr('readonly');
     if ($('#imgLinkLocal').val() != '') {
       $('#localizeImg').addClass('disabled');
