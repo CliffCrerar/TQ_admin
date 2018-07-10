@@ -14,26 +14,27 @@
     "update": "^0.7.4"
   },
   "devDependencies": {
-    "url-loader": "^1.0.1",
-    "webpack": "^4.3.0",
-    "webpack-cli": "^2.0.12",
-    "webpack-jquery-ui": "^1.0.0",
-    "webpack-manifest-plugin": "^2.0.0-rc.2",
-    "script-loader": "^0.7.2",
-    "style-loader": "^0.20.3",
-    "uglifyjs-webpack-plugin": "^1.2.4",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.1.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-plugin-flowtype": "^2.46.1",
     "file-loader": "^1.1.11",
-    "jshint": "^2.9.5"
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.1.0",
+    "jshint": "^2.9.5",
+    "script-loader": "^0.7.2",
+    "style-loader": "^0.20.3",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-jquery-ui": "^1.0.0",
+    "webpack-manifest-plugin": "^2.0.0-rc.2"
   },
   "scripts": {
     "test": "test",
-    "start": "webpack --watch --config webpack.config.dev.js --mode development",
+    "start": "webpack-dev-server  --open --config webpack.config.dev.js --mode development",
     "watchLive": "webpack --watch --config webpack.config.dev1.js --mode development",
     "buildLive": "webpack --config webpack.config.dev1.js --display-modules --mode development",
     "build": "webpack --config webpack.config.dev.js --display-modules --mode development",
@@ -44,7 +45,9 @@
     "type": "git",
     "url": "git+https://github.com/CliffCrerar/TQ_admin.git"
   },
-  "keywords": ["Keywords"],
+  "keywords": [
+    "Keywords"
+  ],
   "author": "Cliff Crerar",
   "license": "ISC",
   "bugs": {
