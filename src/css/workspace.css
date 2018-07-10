@@ -9,8 +9,33 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-26 23:26:29 
- * Last modified  : 2018-03-29 18:55:31
+ * Last modified  : 2018-04-02 13:00:12
  */
+
+.loadingDiv {
+  display: none;
+  position: fixed;
+  height: 100%;
+  z-index: 7000;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.loadingImg {
+  position: relative;
+  border-radius: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loadingTxt {
+  width: 100%;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 7100;
+}
 
 .ui-menu {
   height: 50%;
@@ -41,6 +66,8 @@
 .alertOverlay {
   position: fixed;
   display: none;
+  top: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -100;
   min-width: 100%;
@@ -49,12 +76,67 @@
 
 .card2 {
   margin-top: 1vh;
-  height: 100%;
+}
+
+.card3 {
+  margin-top: 1vh;
+}
+
+.card3-body {
+  padding: 5px;
+}
+
+.modeDesc {
+  width: 50%;
+  margin: 0%;
+  padding-left: 5%;
+}
+.partCount {
+  width: 50%;
+  margin: 0%;
+  padding-right: 5%;
+}
+
+.vMode {
+  color: rgb(0, 204, 0);
+}
+
+.eMode {
+  color: rgb(255, 187, 0);
+}
+
+.aMode {
+  color: rgb(204, 0, 0);
+}
+
+.wsHeading {
+  font-family: black ops one;
 }
 
 .form-control {
   min-height: 24px !important;
   margin: 5px 0 5px 0 !important;
+}
+
+.imgBtnLinks {
+  width: 40px !important;
+}
+
+.editModeBtns {
+  display: none;
+  width: 50%;
+}
+
+.edtCancelSave {
+  width: 50% !important;
+}
+
+.btn-danger.edtCancelSave {
+  margin-left: -5px !important;
+}
+
+.addModeBtns {
+  display: none;
 }
 
 .imgSettings {
@@ -84,10 +166,24 @@
   cursor: not-allowed;
 }
 
+.prevNextArrow {
+  color: white;
+}
+
+.arrow {
+  display: none;
+}
+
+.disabledArrow {
+  cursor: not-allowed;
+  color: rgba(128, 128, 128, 0.37);
+}
+
 .leftArrow {
-  position: absolute;
-  top: 50%;
-  left: -10%;
+  position: fixed !important;
+  top: 20%;
+  left: 5%;
+  z-index: 4000;
 }
 
 .leftArrow:hover {
@@ -95,9 +191,10 @@
 }
 
 .rightArrow {
-  position: absolute;
-  top: 50%;
-  right: -10%;
+  position: fixed !important;
+  top: 20%;
+  right: 5%;
+  z-index: 4000;
 }
 
 .rightArrow:hover {
@@ -120,5 +217,5 @@
 }
 
 .mSelect {
-  overflow: scroll;
+  overflow-y: scroll;
 }

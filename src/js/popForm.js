@@ -9,20 +9,36 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-27 20:22:37 
- * Last modified  : 2018-03-28 03:15:37
+ * Last modified  : 2018-04-02 07:45:53
  */
-
+const url = require('./reqUrl');
 module.exports = part => {
   console.log(part);
   console.log(JSON.parse(part));
   var p = JSON.parse(part);
   $('#imgLink').val(p.imgLink);
-  $('#showImg').attr('src', p.imgLink);
+  $('.imgBtnLinks').removeClass('btn-primary').addClass('btn-secondary');
+  if (p.imgLinkLocal != undefined && p.imgLinkLocal != '') {
+    var localLink = url.fileServer() + p.imgLinkLocal;
+    $('#imgLinkLocal').val(p.imgLinkLocal);
+    $('#showImg').attr('src', localLink);
+    $('#imgLinkLocalBtn').removeClass('btn-secondary').addClass('btn-primary');
+    $('#localizeImg').addClass('disabled');
+  } else {
+    $('#imgLinkLocal').val('');
+    $('#showImg').attr('src', p.imgLink);
+    $('#imgLinkBtn')
+      .removeClass('btn-secondary')
+      .addClass('btn-primary disabled');
+    $('#imgLinkLocalBtn').addClass('disabled');
+  }
   $('#partName').val(p.partName);
   $('#partDesc').val(p.partDesc);
   $('#make').val(p.make);
   for (var i = 0; i < p.models.length; i++) {
-    $('#models').append('<option>' + p.models[i] + '</option>');
+    $('#models').append(
+      '<option value="' + i + '">' + p.models[i] + '</option>'
+    );
   }
   $('#color').val(p.colors);
   $('#instTime').val(p.instTime);

@@ -5,9 +5,21 @@
  *
  * long description for the file
  *
- * @summary Controls the alert operations
+ * @summary Contians the alert functions
  * @author Cliff Crerar
  *
- * Created at     : 2018-03-29 18:35:01 
- * Last modified  : 2018-03-29 18:42:30
+ * Created at     : 2018-04-01 19:03:25 
+ * Last modified  : 2018-04-02 07:17:03
  */
+
+/* SHOW ALERT FUNCTION */
+module.exports = userAlert => {
+  $(userAlert).slideDown();
+  $('.alertOverlay').css('z-index', '5900').fadeIn();
+  /* HIDE ALERTS */
+  $('.hideAlert').click(() => {
+    $('.userAlert').slideUp();
+    $('.alertOverlay').fadeOut();
+    $('.alertOverlay').css('z-index', '-100');
+  });
+};

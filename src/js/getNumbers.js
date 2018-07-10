@@ -9,14 +9,14 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-27 00:48:46 
- * Last modified  : 2018-03-28 00:52:42
+ * Last modified  : 2018-04-02 09:28:10
  */
 
 const url = require('./reqUrl');
 module.exports = () => {
   //console.log(url);
   $.ajax({
-    url: url + 'pNumbers',
+    url: url.webserver() + 'pNumbers',
     method: 'GET',
     origin: '*',
     contentType: 'text/plain',

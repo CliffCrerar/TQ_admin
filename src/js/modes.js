@@ -1,35 +1,53 @@
 module.exports = {
+  // VIEW MODE
   viewMode() {
-    $('.dis').addClass('disabled');
-    $('#partNumber').removeClass('disabled');
-    $('#showPart').show();
-    $('#addNew').show();
-    $('#addNew').removeClass('btn-dark').removeClass('col-5');
-    $('#addNew').addClass('btn-success').addClass('col-3').html('+NEW');
-    $('#edit_save').removeClass('btn-danger').removeClass('col-10');
-    $('#edit_save').addClass('btn-warning').addClass('col-4');
-    $('#edit_save').html('<b>EDIT<b>');
-    $('#partNumber').autocomplete('enable');
+    console.log('SWITCH TO VIEW MODE');
+    //console.log($('#editModeBtns').css('display'));
+    //console.log($('#addModeBtns').css('display'));
+    $('.arrow').removeClass('disabledArrow');
+    var prevMode = '';
+    if ($('#editModeBtns').css('display') == 'block') {
+      prevMode = 'edit';
+      $('#editModeBtns').hide();
+    } else if ($('#addModeBtns').css('display') == 'block') {
+      prevMode = 'add';
+      $('#addModeBtns').hide();
+    }
+    $('#viewModeBtns').show();
+    console.log(prevMode);
+    $('.dis').addClass('disabled').attr('readonly');
+    $('#partNumber').removeClass('disabled').removeAttr('readonly');
+    //$('#edit').removeClass('disabled');
+    $('#modeDesc')
+      .removeClass('eMode aMode')
+      .addClass('vMode')
+      .html('<b>VIEW MODE</b>');
   },
+  // ADD MODE
   addMode() {
-    $('.dis').removeClass('disabled');
-    $('.dis').val('');
-    $('.mSelect').children().remove();
-    $('#showPart').hide();
-    $('#addNew').removeClass('btn-success').removeClass('col-3');
-    $('#addNew').addClass('btn-dark').addClass('col-5').html('CANCEL');
-    $('#edit_save').removeClass('btn-warning').removeClass('col-4');
-    $('#edit_save').addClass('btn-danger').addClass('col-5').html('SAVE');
-    $('#partNumber').focus();
-    $('#partNumber').autocomplete('disable');
+    $('.arrow').addClass('disabledArrow');
+    console.log('SWITCH TO VIEW MODE');
+    $('#modeDesc')
+      .removeClass('eMode vMode')
+      .addClass('aMode')
+      .html('<b>ADD MODE</b>');
   },
+  // EDIT MODE
   editMode() {
-    $('.dis').removeClass('disabled');
-    $('#partNumber').addClass('disabled');
-    $('#showPart').hide();
-    $('#addNew').hide();
-    $('#edit_save').removeClass('btn-warning').removeClass('col-4');
-    $('#edit_save').addClass('btn-danger').addClass('col-10');
-    $('#edit_save').html('<b>SAVE<b>');
+    console.log('SWITCH TO EDIT MODE');
+    //console.log(btns);
+    //console.log(editBtns);
+    $('.arrow').addClass('disabledArrow');
+    $('.dis').removeClass('disabled').removeAttr('readonly');
+    if ($('#imgLinkLocal').val() != '') {
+      $('#localizeImg').addClass('disabled');
+    }
+    $('#viewModeBtns').hide();
+    $('#editModeBtns').show();
+    $('#partNumber').addClass('disabled').attr('readonly');
+    $('#modeDesc')
+      .removeClass('vMode aMode')
+      .addClass('eMode')
+      .html('<b>EDIT MODE</b>');
   }
 };

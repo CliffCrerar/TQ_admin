@@ -9,16 +9,35 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-22 22:06:50 
- * Last modified  : 2018-03-22 22:21:39
+ * Last modified  : 2018-04-02 11:53:55
  */
 
-.login{
-    width: 40%;
-    padding: 5%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border: 5px solid black;
-    border-radius: 24px;
+.login {
+  width: 40%;
+  padding: 5%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid black;
+  border-radius: 24px;
+  background: linear-gradient(to right, rgb(110, 110, 110), rgb(184, 184, 182));
+}
+
+.loginBtn {
+  border-radius: 24px;
+}
+
+.loginControl {
+  border-radius: 24px;
+  margin-bottom: 15% !important;
+}
+
+.login-form-group {
+  margin-bottom: 15% !important;
+}
+
+.liHeading {
+  font-family: black ops one;
+  margin-bottom: 15%;
 }

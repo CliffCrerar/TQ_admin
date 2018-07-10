@@ -9,29 +9,17 @@
  * @author Cliff Crerar
  *
  * Created at     : 2018-03-23 17:48:17 
- * Last modified  : 2018-03-27 19:05:21
+ * Last modified  : 2018-04-02 12:11:16
  */
 
 var req = require('./loginReq.js');
-
+$('[data-toggle="tooltip"]').tooltip();
 $('#loginButton').on('click', ev => {
-    //console.log('click');
-    var login = {
-        userName: $('#userName').val(),
-        password: $('#password').val(),
-    };
-    //req(login);
-    console.log(req(login));
-});
-
-$('input').keypress(some => {
-    if (some.originalEvent.key == 'Enter') {
-        $('#loginButton').click();
-    }
-});
-
-$('.modal').keypress(some => {
-    if (some.originalEvent.key == 'Enter') {
-        $('#modalOk').click();
-    }
+  //console.log('click');
+  var login = {
+    userName: $('#userName').val(),
+    password: $('#password').val()
+  };
+  req(login);
+  //console.log(req(login));
 });

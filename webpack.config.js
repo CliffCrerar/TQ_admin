@@ -3,12 +3,13 @@ const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 //const HtmlWebpackPlugin = require('Ht')
 
 module.exports = {
   entry: './src/index.js',
   target: 'node',
-  devtool: 'inline-source-map',
+  //devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -23,23 +24,18 @@ module.exports = {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader'
       },
-      /*{
-        test: /\.(jpe?g|png|gif)$/i,
-        loader: 'file-loader',
-        query: {
-          name: '[name].[ext]',
-          outputPath: 'images/'
-          //the images will be emmited to public/assets/images/ folder
-          //the images will be put in the DOM <style> tag as eg. background: url(assets/images/image.png);
-        }
-      },*/
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader']
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
       },
       {
         test: /\.(html)$/,
@@ -53,7 +49,8 @@ module.exports = {
       {
         test: /\.exec\.js$/,
         use: ['script-loader']
-      },
+      }
+      /*
       {
         test: /\.(png|jpg|gif)$/,
         use: [
@@ -65,6 +62,7 @@ module.exports = {
           }
         ]
       }
+      */
     ]
   },
   plugins: [
@@ -79,6 +77,9 @@ module.exports = {
       title: 'TQ Admin Console'
     }),
     new CleanWebpackPlugin(['dist']),
-    new ManifestPlugin(['Manifest'])
+    new ManifestPlugin(['Manifest']),
+    new UglifyJsPlugin({
+      sourceMap: true
+    })
   ]
 };
